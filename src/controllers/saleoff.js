@@ -7,7 +7,7 @@ let index = async (req,res)=>{
     let {Group,Role} = req.user ;
     let [listDenomintations,listTypeOffSaleOff,listSaleOff] = await Promise.all([GetListDenomintations(),getListTypeOffSaleOff(),SaleOffModel.GetListSaleOff(Role,Group)]);
     // console.log(JSON.parse(JSON.stringify(listDenomintations)));
-    console.log(listSaleOff[1][0]);
+    console.log(listSaleOff);
     res.render('clients/saleoff/index',{user:req.user,listDenomintations:JSON.parse(JSON.stringify(listDenomintations)),
         listTypeOffSaleOff:JSON.parse(JSON.stringify(listTypeOffSaleOff)) , moment:moment,listSaleOff:listSaleOff[0]})
 }

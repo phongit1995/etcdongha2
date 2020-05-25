@@ -12,7 +12,20 @@ const SaleOffFields = {
     DateEnd:'DateEnd' ,// Ngày kết Thuc
     Status:'Status',
     Notes:'Notes' , // Ghi Chú
-    NotesAdmin:'NotesAdmin'
+    NotesAdmin:'NotesAdmin',
+    TrackingNo:'TrackingNo',
+    StatusPro:'StatusPro',
+    AddVn:'AddVn',
+    PhoneVn:'PhoneVn',
+    AddJp :'AddJp',
+    PhoneJp:'PhoneJp',
+    Notting:'Notting',
+    NameProduct:'NameProduct',
+    QtyPro:'QtyPro',
+    RatePro:'RatePro',
+    TickMoney:'TickMoney',
+    DateDeli:'DateDeli'
+
 }
 const  SaleOffDB=  db.define('SaleOff',{
     [SaleOffFields.SaleOffID]:{
@@ -61,7 +74,44 @@ const  SaleOffDB=  db.define('SaleOff',{
                 return JSON.parse(this.getDataValue(SaleOffFields.NotesAdmin));
             }
         }
-    }
+    },
+    [SaleOffFields.StatusPro]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.TrackingNo]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.AddVn]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.PhoneVn]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.AddJp]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.PhoneJp]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.Notting]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.NameProduct]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.QtyPro]:{
+        type:Sequelize.INTEGER,
+    },
+    [SaleOffFields.RatePro]:{
+        type:Sequelize.INTEGER,
+    },
+
+    [SaleOffFields.TickMoney]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.DateDeli]:{
+        type:Sequelize.DataTypes.TIME,
+    },
 },{
     freezeTableName: true
 })

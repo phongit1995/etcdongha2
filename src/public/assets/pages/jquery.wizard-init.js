@@ -23,13 +23,13 @@ $(function() {
     // Stepy callbacks
     $("#wizard-callbacks").stepy({
         next: function(index) {
-            alert('Going to step: ' + index);
+            // alert('Going to step: ' + index);
         },
         back: function(index) {
-            alert('Returning to step: ' + index);
+            // alert('Returning to step: ' + index);
         },
         finish: function() {
-            alert('Submit canceled.');
+            // alert('Submit canceled.');
             return false;
         }
     });
