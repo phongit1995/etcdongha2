@@ -1,0 +1,131 @@
+<div id="editForm" class="modal fade in" role="dialog" style="display: none; padding-right: 15px;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Cập nhật thông tin </h4>
+            </div>
+            <div class="modal-body" id="editor-body">
+                <form id="addTrackForm" action="javascript:return false;" method="POST">
+                    <p><b>Biển số</b>:
+                        <input type="text" class="form-control" id="LicensePlatesEdit" name="trackNo" required="true" value="">
+                        <!-- <div class="btn btn-search"><i class="fas fa-search"></i> </div> -->
+                    </p>
+                    <p><b>LÀN</b>
+                        <br>
+                        <select class="form-control" id="LaneEdit" name="LaneEdit">
+                            <% ListLane.forEach((item)=>{ %>
+                                <option value="<%=item.LaneID%>"><%=item.LaneName%></option>
+                           <% }) %>
+                        </select>
+                    </p>
+                    <p><b>Ngày tháng</b>:
+                        <input type="text" class="datetimepicker form-control flatpickr-input datetimeinput" id="OperatingDiaryTimeEdit" name="OperatingDiaryTimeEdit" required="true" readonly="readonly">
+                    </p>
+                    <p><b>Mô Tả</b>
+                        <br>
+                        <select class="form-control" id="DescriptorEdit" name="DescriptorEdit">
+                            <% ListDescriptor.forEach((item)=>{ %>
+                                <option value="<%=item.DescriptorId%>"><%=item.DescriptorContent%></option>
+                           <% }) %>
+                        </select>
+                    </p>
+                    <p><b>Xử Lý</b>
+                        <br>
+                        <select class="form-control" id="HandleEdit" name="HandleEdit">
+                            <% Listhandleerror.forEach((item)=>{ %>
+                                <option value="<%=item.HandleErrorId%>"><%=item.HandleErrorContent%></option>
+                           <% }) %>
+                        </select>
+                    </p>
+                    <p><b>GHI CHÚ</b>
+                        <br>
+                        <textarea class="form-control" id="NotesEdit" name="NotesEdit" required="true"></textarea>
+                    </p>
+                    <p id="image-priview-edit"></p>
+                    <input type="hidden" id="idOperatingDiary" name="idOperatingDiary" >
+                    <p><b>Hình ảnh</b>: <input type="file" class="form-control" id="ImageEdit" name="ImageEdit"></p>
+                    <button class="btn btn-primary " id="OperatingDiaryUpdate" type="button"><i class="fa fa-save"></i> Update</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="addForm" class="modal fade" role="dialog" style="display: none;">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><font color="green">Thêm thông tin</font></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="addTrackForm" action="javascript:return false;" method="POST">
+                        <p><b>Biển số</b>:
+                            <input type="text" class="form-control" id="LicensePlates" name="trackNo" required="true" value="">
+                            <!-- <div class="btn btn-search"><i class="fas fa-search"></i> </div> -->
+                        </p>
+                        <p><b>LÀN</b>
+                            <br>
+                            <select class="form-control" id="Lane" name="Lane">
+                                <% ListLane.forEach((item)=>{ %>
+                                    <option value="<%=item.LaneID%>"><%=item.LaneName%></option>
+                               <% }) %>
+                            </select>
+                        </p>
+                        <p><b>Ngày tháng</b>:
+                            <input type="text" class="datetimepicker form-control flatpickr-input datetimeinput" id="OperatingDiaryTime" name="OperatingDiaryTime" required="true" readonly="readonly">
+                        </p>
+                        <p><b>Mô Tả</b>
+                            <br>
+                            <select class="form-control" id="Descriptor" name="Descriptor">
+                                <% ListDescriptor.forEach((item)=>{ %>
+                                    <option value="<%=item.DescriptorId%>"><%=item.DescriptorContent%></option>
+                               <% }) %>
+                            </select>
+                        </p>
+                        <p><b>Xử Lý</b>
+                            <br>
+                            <select class="form-control" id="HandeError" name="HandeError">
+                                <% Listhandleerror.forEach((item)=>{ %>
+                                    <option value="<%=item.HandleErrorId%>"><%=item.HandleErrorContent%></option>
+                               <% }) %>
+                            </select>
+                        </p>
+                        <p><b>GHI CHÚ</b>
+                            <br>
+                            <textarea class="form-control" id="Notes" name="Notes" required="true"></textarea>
+                        </p>
+                        <p id="image-priview-add"></p>
+                        <p><b>Hình ảnh</b>: <input type="file" class="form-control" id="Image" name="Image"></p>
+                        <button class="btn btn-success add-operatingdiary"><i class="fa fa-plus"></i> Lưu</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="imageshow" class="hide" >
+            <span class="closepup">&times;</span>
+            <div class="translucent"></div>  
+            <div  class='popup-iamge'style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100%;width: 100%;    position: absolute;z-index: 99999;"> 
+                <div style="background-color: black;" class="content-image-show">
+                    <img src="https://www.google.com/logos/doodles/2015/googles-new-logo-5078286822539264.3-hp2x.gif" width="600px" height="500px" style="border-radius: 10px;" >
+                </div>
+                <!-- <a  href="uploads/1571713238_2019-10-07_172943.png" download style="margin-top:20px">
+                    <button type="button" class="btn btn-success" >
+                        Tải Xuống 
+                    </button>
+                </a> -->
+            </div>
+        </div>
+    

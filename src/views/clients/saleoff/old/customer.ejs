@@ -1,0 +1,178 @@
+<div id="editForm" class="modal fade in" role="dialog" style="display: none; padding-right: 15px;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                 <h4 class="modal-title">Cập nhật xe vượt trạm</h4>
+             </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-md-10">
+                         <div class="form-group">
+                             <label for="field-3" class="control-label">Biển số xe:</label>
+                             <input type="text" class="form-control" id="LicensePlatesEdit" placeholder="">
+                         </div>
+                     </div>
+ 
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Loại Giảm giá</label>
+                             <select class="form-control" id="TypeOffSaleOffEdit" name="TypeOffSaleOff">
+                                <% listTypeOffSaleOff.forEach((item)=>{ %>
+                                    <option value="<%=item.TypeOfSaleOffID%>"><%=item.TypeOfSaleOffName%></option>
+                               <% })%>
+                            </select>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Mệnh Giá:</label>
+                             <select class="form-control" id="DenomintationsEdit" name="Denominations">
+                                <% listDenomintations.forEach((item)=>{ %>
+                                    <option value="<%=item.DenominationsID%>"><%=item.DenominationsNumbers%></option>
+                               <% })%>
+                            </select>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-4" class="control-label">Ngày Bắt Đầu</label>
+                             <input type="text" class="form-control" id="DateStartEdit" placeholder="">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-4" class="control-label">Ngày Kết Thúc:</label>
+                             <input type="text" class="form-control" id="DateEndEdit" placeholder="">
+                         </div>
+                     </div>    
+                 </div>
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="form-group no-margin">
+                             <label for="field-7" class="control-label">Ghi chú:</label>
+                             <textarea class="form-control" id="NotesEdit" placeholder=""></textarea>
+                             <input type="hidden" id="idSaleOffEdit" />
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Hình ảnh:</label>
+                            <div id="image-priview-edit" style="padding: 5px"></div>
+                            <input type="file" class="form-control"  id="ImageEdit">
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                 <button type="button" class="btn btn-success waves-effect waves-light" id="UpdateSaleOff">Lưu thay đổi</button>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- sample modal content -->
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                <h4 class="modal-title">Thêm xe vượt trạm</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Biển số xe:</label>
+                            <input type="text" class="form-control" id="LicensePlates" placeholder="">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Loại giảm giá:</label>
+                            <select class="form-control" id="TypeOffSaleOff" name="TypeOffSaleOff">
+                                <% listTypeOffSaleOff.forEach((item)=>{ %>
+                                    <option value="<%=item.TypeOfSaleOffID%>"><%=item.TypeOfSaleOffName%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Mệnh giá:</label>
+                            <select class="form-control" id="Denominations" name="Denominations">
+                                <% listDenomintations.forEach((item)=>{ %>
+                                    <option value="<%=item.DenominationsID%>"><%=item.DenominationsNumbers%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Ngày bắt đầu:</label>
+                            <input type="text" class="form-control dateinput" id="DateStart" >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Ngày kết thúc:</label>
+                            <input type="text" class="form-control dateinput" id="DateEnd" >
+                        </div>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Ghi chú:</label>
+                            <textarea class="form-control" id="Notes" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Hình ảnh:</label>
+                            <div id="image-priview-add" style="padding: 5px"></div>
+                            <input type="file" class="form-control"  id="SaleoffImage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                <button type="button" class="btn btn-success waves-effect waves-light add-saleoff">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+    
+
+    <div id="imageshow" class="hide" >
+        <span class="closepup">&times;</span>
+        <div class="translucent"></div>  
+        <div  class='popup-iamge'style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100%;width: 100%;    position: absolute;z-index: 99999;"> 
+            <div style="background-color: black;" class="content-image-show">
+                <img src="https://www.google.com/logos/doodles/2015/googles-new-logo-5078286822539264.3-hp2x.gif" width="600px" height="500px" style="border-radius: 10px;" >
+            </div>
+            <!-- <a  href="uploads/1571713238_2019-10-07_172943.png" download style="margin-top:20px">
+                <button type="button" class="btn btn-success" >
+                    Tải Xuống 
+                </button>
+            </a> -->
+        </div>
+    </div>

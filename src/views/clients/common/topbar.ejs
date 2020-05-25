@@ -1,0 +1,212 @@
+<div class="topbar">
+    <!-- LOGO -->
+    <div class="topbar-left">
+        <a href="/" class="logo">
+                    <span>
+                        <img src="" alt="" height="111">
+                    </span>
+            <i>
+                <img src="" alt="" height="33">
+            </i>
+        </a>
+    </div>
+    <%
+                        
+        let content =0 ;
+        numbernotifi  = 0 ;
+        user.notifications.forEach((item)=>{
+            if(item.number>0){
+                content++ ;
+                numbernotifi+= item.number ;
+            }
+        }) 
+    %>
+    <nav class="navbar-custom bg-success">
+
+        <ul class="list-inline float-right mb-0">
+            <li class="list-inline-item dropdown notification-list">
+                <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <i class="dripicons-bell noti-icon"></i>
+                    <span class="badge badge-pink noti-icon-badge"><%=content %></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg" aria-labelledby="Preview">
+                    <!-- item-->
+
+                    <div class="dropdown-item noti-title">
+                        <h5><span class="badge badge-danger float-right"> <%=numbernotifi %></span>Notification</h5>
+                    </div>
+
+                    <!-- item-->
+                    <% 
+                        user.notifications.forEach((item)=>{
+                            if(item.number>0){ %>
+                                <div class="item-noti">
+                                    <div class="notifi-icon bg-success"><i class="icon-bubble"></i></div>
+                                    <div style="font-size: 13px; flex-grow: 1;"> <a href="<%=item.link%>"><%=item.message%></a> </div>
+                                </div>
+                           <% }
+                        }) 
+                    %>
+
+
+                </div>
+            </li>
+
+            <li class="list-inline-item dropdown notification-list">
+                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <img src="http://wooeu.net/home/uploads/<%=user.Avatar%>" alt="user" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                    <!-- item-->
+                    <div class="dropdown-item noti-title">
+                        <h5 class="text-overflow"><small>Welcome ! <%=user.UserName%></small> </h5>
+                    </div>
+
+                    <!-- item-->
+                    <a href="/me" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account-circle"></i> <span>Profile</span>
+                    </a>
+
+                    <!-- item-->
+                    <a class="dropdown-item notify-item">
+                        <i class="mdi mdi-settings"></i> <span  data-toggle="modal" data-target="#changepassword">Đổi Mật Khẩu</span>
+                    </a>
+
+                    <!-- item-->
+                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-lock-open"></i> <span>Lock Screen</span>
+                    </a> -->
+
+                    <!-- item-->
+                    <a href="/logout" class="dropdown-item notify-item">
+                        <i class="mdi mdi-power"></i> <span>Logout</span>
+                    </a>
+
+                </div>
+            </li>
+
+        </ul>
+
+        <ul class="list-inline menu-left mb-0">
+            <li class="float-left">
+                <button class="button-menu-mobile open-left waves-light waves-effect">
+                    <i class="dripicons-menu"></i>
+                </button>
+            </li>
+            <li class="hide-phone app-search">
+                   <p class="title-etc">QUẢN LÝ ĐƠN HÀNG</p>
+            </li>
+        </ul>
+
+    </nav>
+
+</div>
+<div id="changepassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                <h4 class="modal-title">Đổi Mật Khẩu</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Mật Khẩu Cũ</label>
+                            <input type="text" class="form-control" id="change_password" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Mật Khẩu Mới</label>
+                            <input type="password" class="form-control " id="change_newpassword" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Xác Nhận Mật Khẩu</label>
+                            <input type="password" class="form-control" id="change_confirmpassword">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                <button type="button" class="btn btn-success waves-effect waves-light " id="change_password_button">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+<style>
+    .item-noti {
+        padding: 10px 20px;
+        display: flex;
+    }
+    .notifi-icon {
+        height: 36px;
+        width: 63px;
+        line-height: 36px;
+        text-align: center;
+        margin-right: 10px;
+        border-radius: 50%;
+        color: #ffffff;
+        flex-basis: 63px;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $('#change_password_button').click(function(){
+            let change_password = $('#change_password').val();
+            let change_newpassword = $('#change_newpassword').val();
+            let change_confirmpassword = $('#change_confirmpassword').val();
+            if(change_password=='' || change_newpassword=='' || change_confirmpassword==''){
+            return alertify.error('Vui Lòng Nhập Đủ Thông Tin');
+            }
+            if(change_newpassword!=change_confirmpassword){
+            return alertify.error('2 mật khẩu chưa giống nhau');
+            }
+            $.ajax({
+            url:"/me/changepassword",
+            method:"post",
+            data:{
+                password:change_password,
+                newpassword:change_newpassword,
+                confirmpassword:change_confirmpassword
+            },
+            success:(data)=>{
+                if(!data.error){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Đổi Mật Khẩu Thành Công',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(()=>{
+                        window.location.href="/logout";
+                    },1000)
+                   
+                }
+                else{
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: data.error,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                $('#change_password').val('');
+                $('#change_newpassword').val('');
+                $('#change_confirmpassword').val('');
+            }
+            })
+        })
+    })
+</script>

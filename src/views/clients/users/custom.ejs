@@ -1,0 +1,53 @@
+<div id="addForm" class="modal" role="dialog" style="padding-right: 15px;">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Thêm Nhân Viên </h4>
+                </div>
+                <div class="modal-body" id="editor-body">
+                    <form id="updateTrack">
+                        <p><b>Tên Nhân Viên</b>:
+                            <input type="text" class="form-control" id="Name" name="Name" required="true" >
+                        </p>
+                        <% if(user.Role==1) { %>
+                        <p><b>Nhóm</b>:
+                            <select class="form-control" id="group" name="group">
+                                    <% ListGroups.forEach(item=>{ %>
+                                        <option value="<%=item.GroupID %>"> <%=item.GroupName%></option>
+                                    <% }) %>
+                            </select>
+                        </p>
+                        <p><b>Loại Thành Viên</b>
+                            <br>
+                            <select class="form-control" id="Role" name="Role">
+                                <% UsersRole.forEach(item=>{ %>
+                                    <option value="<%=item.type %>"> <%=item.name%></option>
+                               <% }) %>
+                            </select>
+                        </p>
+                        <% } %>
+                        <p><b>Tên Tải Khoản</b>:
+                            <input type="text" class="form-control" id="username" name="username" required="true" >
+                        </p>
+                        <p><b>Mật Khẩu :</b>
+                            <input type="text" class="form-control" id="password" name="password" required="true" >
+                        </p>
+                        <p><b>Ngày Sinh</b>
+                            <br>
+                            <input type="text" class="form-control dateinput" id="dateofbirth" name="dateofbirth" required="true" >
+                        </p>
+                        <p><b>Số Điện Thoại</b>
+                            <br>
+                            <input type="text" class="form-control" id="phone" name="phone" required="true" >
+                        </p>
+                        <button class="btn btn-success " id="createUser" type="button"><i class="fa fa-save"></i> Thêm</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>

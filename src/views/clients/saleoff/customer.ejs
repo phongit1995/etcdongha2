@@ -1,0 +1,316 @@
+<div id="editForm" class="modal fade in" role="dialog" style="display: none; padding-right: 15px;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                 <h4 class="modal-title">Cập nhật thông tin</h4>
+             </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-md-10">
+                         <div class="form-group">
+                             <label for="field-3" class="control-label">Biển số xe:</label>
+                             <input type="text" class="form-control" id="LicensePlatesEdit" placeholder="">
+                         </div>
+                     </div>
+ 
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Loại Giảm giá</label>
+                             <select class="form-control" id="TypeOffSaleOffEdit" name="TypeOffSaleOff">
+                                <% listTypeOffSaleOff.forEach((item)=>{ %>
+                                    <option value="<%=item.TypeOfSaleOffID%>"><%=item.TypeOfSaleOffName%></option>
+                               <% })%>
+                            </select>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Mệnh Giá:</label>
+                             <select class="form-control" id="DenomintationsEdit" name="Denominations">
+                                <% listDenomintations.forEach((item)=>{ %>
+                                    <option value="<%=item.DenominationsID%>"><%=item.DenominationsNumbers%></option>
+                               <% })%>
+                            </select>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-4" class="control-label">Ngày Bắt Đầu</label>
+                             <input type="text" class="form-control" id="DateStartEdit" placeholder="">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-4" class="control-label">Ngày Kết Thúc:</label>
+                             <input type="text" class="form-control" id="DateEndEdit" placeholder="">
+                         </div>
+                     </div>    
+                 </div>
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="form-group no-margin">
+                             <label for="field-7" class="control-label">Ghi chú:</label>
+                             <textarea class="form-control" id="NotesEdit" placeholder=""></textarea>
+                             <input type="hidden" id="idSaleOffEdit" />
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Hình ảnh:</label>
+                            <div id="image-priview-edit" style="padding: 5px"></div>
+                            <input type="file" class="form-control"  id="ImageEdit">
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                 <button type="button" class="btn btn-success waves-effect waves-light" id="UpdateSaleOff">Lưu thay đổi</button>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- sample modal content -->
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+ 
+            <!-- Clickable Wizard -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-box">
+                        <h4 class="m-t-0 header-title">Thêm mới thông tin</h4>
+                        <p class="text-muted m-b-30 font-13">
+                            Vui lòng điền chính xác các thông tin.
+                        </p>
+                        <form id="wizard-callbacks">
+                            <fieldset title="1">
+                                <legend>Thông tin vận chuyển</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Mã đơn hàng:</label>
+                            <input class="form-control" id="TrackingNo" name="">
+                        </input>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Trạng thái:</label>
+                            <select class="form-control" id="Denominations" name="Denominations">
+                                <option value="">Đang giao</option>
+                                <option value="">Thành công</option>
+                                <option value="">Hủy </option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Nhân viên:</label>
+                            <select class="form-control" id="Denominations" name="Denominations">
+                                <option value="">Tieuman</option>
+                                <option value="">Abc</option>
+                                <option value="">Dad</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+              <!-- Address -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Vận chuyển VN:</label>
+                            <input class="form-control" id="AddVn" name="" placeholder="Địa chỉ VN">
+                        </input>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">&nbsp;</label>
+                            <input class="form-control" id="PhoneVn" name="" placeholder="Điện thoại VN">
+                            </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Vận chuyển JP:</label>
+                            <input class="form-control" id="AddJp" name="" placeholder="Địa chỉ JP">
+                        </input>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">&nbsp;</label>
+                            <input class="form-control" id="PhoneJp" name="" placeholder="Điện thoại Nhật">
+                            </input>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Address -->
+                                <div class="form-group">
+                                    <label for="aboutme2">Ghi chú:</label>
+                                    <textarea class="form-control" rows="5" id="Notting"></textarea>
+                                </div>
+                            </fieldset>
+                            <fieldset title="2">
+                                <legend>Thông tin hàng hóa</legend>
+
+                                <!-- Address -->
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Tên sản phẩm:</label>
+                            <input class="form-control" id="NameProduct" name="">
+                        </input>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Số lượng:</label>
+                            <input class="form-control" id="QtyPro" name="">
+                            </input>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Đơn giá:</label>
+                            <input class="form-control" id="RatePro" name="">
+                            </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Đặt cọc:</label>
+                            <input class="form-control" id="TickMoney" name="">
+                        </input>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Ngày dự kiến giao:</label>
+                            <input type="text" class="form-control dateinput" id="DateDeli" >
+                            </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Hình ảnh:</label>
+                            <div id="image-priview-add" style="padding: 5px"></div>
+                            <input type="file" class="form-control"  id="SaleoffImage">
+                        </div>
+                    </div>
+                </div>
+                <!-- End Address -->
+                            </fieldset>
+                            <fieldset title="3">
+                                <legend>Xác nhận thông tin</legend>
+                <div class="row">
+                    <div class="row m-t-30">
+                        <div class="col-6">
+                            <h5>Billing Address</h5>
+
+                            <address class="line-h-24">
+                                Stanley Jones<br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+
+                        </div>
+
+                        <div class="col-6">
+                            <h5>Shipping Address</h5>
+
+                            <address class="line-h-24">
+                                Stanley Jones<br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+
+                        </div>
+                    </div>
+                    <div class="row m-t-30">
+                        <div class="col-6">
+                            <address class="line-h-24">
+                               <img scr="https://lolskin.weblog.vc/img/images/loading/Ahri_15.jpg" width="50%"></img>
+                            </address>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table m-t-30">
+                                    <thead>
+                                    <tr><th>#</th>
+                                        <th class="text-center">Tên hàng hóa</th>
+                                        <th class="text-center">Số lượng</th>
+                                        <th class="text-center">Đơn giá</th>
+                                        <th class="text-center">Thành tiền</th>
+                                    </tr></thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <b>Laptop</b> <br/>
+                                            Brand Model VGN-TXN27N/B
+                                            11.1" Notebook PC
+                                        </td>
+                                        <td>1</td>
+                                        <td>$1799</td>
+                                        <td class="text-right">$1799</td>
+                                    </tr>
+                                     </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>   
+                    
+                </div>
+                            </fieldset>
+                            <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light stepy-finish"><i class="fa fa-print m-r-5"></i> Print</a>
+                            <button type="button" class="btn btn-success waves-effect waves-light add-saleoff stepy-finish">Lưu</button>
+                            <button type="button" class="btn btn-secondary waves-effect stepy-finish" data-dismiss="modal">Tắt</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End row -->
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+    
+
+    <div id="imageshow" class="hide" >
+        <span class="closepup">&times;</span>
+        <div class="translucent"></div>  
+        <div  class='popup-iamge'style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100%;width: 100%;    position: absolute;z-index: 99999;"> 
+            <div style="background-color: black;" class="content-image-show">
+                <img src="https://www.google.com/logos/doodles/2015/googles-new-logo-5078286822539264.3-hp2x.gif" width="600px" height="500px" style="border-radius: 10px;" >
+            </div>
+            <!-- <a  href="uploads/1571713238_2019-10-07_172943.png" download style="margin-top:20px">
+                <button type="button" class="btn btn-success" >
+                    Tải Xuống 
+                </button>
+            </a> -->
+        </div>
+    </div>

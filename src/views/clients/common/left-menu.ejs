@@ -1,0 +1,52 @@
+<div class="left side-menu">
+    <div class="slimscroll-menu" id="remove-scroll">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu" id="side-menu">
+                <li class="menu-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tiểu Mẫn</li>
+
+                <li>
+                    <a href="/saleoff"><i class="fi-briefcase"></i> <span>Quản lý đơn hàng</span></a>
+                </li>
+                <% if(user.Showpage != 1) {%>
+                <li>
+                </li>
+                <% }%>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fi-air-play"></i><span class="badge badge-success pull-right">2</span> <span>Hỗ trợ</span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded=false>
+                        <li><a href="dh2"><i class="fi-clock"></i> <span>Liên hệ</span></a></li>
+                        <li><a href="/guide"><i class="fi-layout"></i> <span>Hướng dẫn</span></a></li>
+                    
+                    </ul>
+                </li>
+               
+                <!-- <li>
+                    <a href="tickets.html"><i class="fi-help"></i><span class="badge badge-danger pull-right">New</span> <span> Tickets </span></a>
+                </li> -->
+                <% if(user.Role < 3) { %>
+                <li class="menu-title" >Quản lý</li>
+                <li>
+                    <a href="javascript: void(0);"><i class="fi-box"></i><span> Người dùng</span> <span class="menu-arrow"></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                            <% if(user.Role==1){%>
+                                <li><a href="/groups">Nhóm</a></li>
+                             <% } %>
+                        <li><a href="/users">Thành Viên</a></li>
+                    </ul>
+                </li>
+                <% } %>
+            </ul>
+
+        </div>
+        <!-- Sidebar -->
+        <div class="clearfix"></div>
+
+    </div>
+    <!-- Sidebar -left -->
+
+</div>

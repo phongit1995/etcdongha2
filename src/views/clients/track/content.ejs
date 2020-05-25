@@ -1,0 +1,182 @@
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title float-left">Danh Sách Vượt Trạm</h4>
+
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item"><a href="#">Quản Lý</a></li>
+                            <li class="breadcrumb-item"><a href="#">Vượt Trạm</a></li>
+                            
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--
+                <div class="col-12">
+                        <div class="portlet">
+                            <div class="portlet-heading bg-success">
+                                <h3 class="portlet-title">
+                                    Success Heading
+                                </h3>
+                                <div class="portlet-widgets">
+                                    <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#bg-success"><i class="mdi mdi-minus"></i></a>
+                                    <a href="#" data-toggle="remove"><i class="mdi mdi-close"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="bg-success" class="panel-collapse collapse in show">
+                                <div class="portlet-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante nulla hendrerit arcu, ac tincidunt mauris lacus sed leo. vamus suscipit molestie vestibulum.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                    <div class="col-12">
+                            <div class="card-box ribbon-box">
+                                    <div class="ribbon ribbon-success"><i class="fa fa-search"></i> Tìm kiếm thông tin:</div>
+                                    <span class="search-toggle"></span>
+                            <div class="card-box table-responsive text-center">
+                            <div class="panel-heading">
+                                          
+                                    <div style="margin-top: 10px;" class="seach-form">
+                                        <div class="row">
+
+                                            <div class="input-group col-md-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Biển số:</div>
+                                                </div>
+                                                <input id="LicensePlatesSearch" type="text" class="form-control" placeholder="VD:74A99999">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                    <span class="input-group-text">Từ ngày:</span>
+                                                    </div>
+                                                    <input id="DateStartSearch" type="text" class="form-control dateinput flatpickr-input"  readonly="readonly">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                    <span class="input-group-text">Đến ngày:</span>
+                                                    </div>
+                                                    <input id="DateEndSearch" type="text" class="form-control dateinput flatpickr-input"  readonly="readonly">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                    <div class="input-group" >
+                                                        <div class="input-group-prepend"><span class="input-group-text">Làn xe:</span></div>
+                                                        <select class="form-control" id="LaneSearch">
+                                                            <option value="all"">TẤT CẢ</option>
+                                                            <% listLane.forEach((item)=>{ %>
+                                                                 <option value="<%=item.LaneID%>"><%=item.LaneName%></option>
+                                                            <% }) %>
+                                                        </select>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:20px">
+                                            <div class="col-md-8">
+                                                <div class="message-search">
+                                                    <div class="table-message">
+                                                    <div>+ Vượt trạm : <span id="totaltimes"></span> (lần)</div>
+                                                    <div>+ Tổng cộng : <span id="totalmoneys"></span> (đ)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="table-button">
+                                                <button type="button" class="btn btn-success waves-effect btn-search-form "><i class="fa fa-search"></i> Tìm Kiếm</button>
+                                                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Thêm mới</button>
+                                                            
+                                                <!--<button class="btn btn-success" type="button" id="addTrack" data-toggle="modal" data-target="#addForm"><i class="fa fa-plus"></i> Thêm xe</button>-->
+                                                <button type="button" class="btn btn-success waves-effect w-md waves-light btn-clear-search"><i class="fa fa-spinner"></i>Làm lại</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    </div>
+                <div class="row">
+                    <div class="col-12">
+                            
+                             <div class="card-box ribbon-box">
+                             <div class="ribbon ribbon-success">Danh sách vượt trạm:</div>
+                         
+                        <div class="card-box table-responsive text-center">
+                        <table id="datatable" class="table table-bordered">
+                            <thead class="title-bg">
+                            <tr>
+                                <th>STT</th>
+                                <th>User</th>
+                                <th>Biển Số Xe</th>
+                                <th>Tên Khách Hàng</th>
+                                <th>Làn</th>
+                                <th>Thời Gian</th>
+                                <th>Mệnh Giá</th>
+                                <th>Ghi Chú</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% listTrack.forEach((item,index)=>{ %>
+                                <tr>
+                                    <td><%=index+1 %></td>
+                                    <td><%=item.UserName %></td>
+                                    <td><%=item.LicensePlates.toUpperCase() %></td>
+                                    <td><%=item.NameCustomer %></td>
+                                    <td><%=item.Lane %></td>
+                                    <td><%=moment(item.TrackTime).tz("Asia/Bangkok").format("DD-MM-YYYY HH:mm")  %></td>
+
+                                   
+                                    <td><%=item.FeeNumbers %></td>
+                                    <td><%=item.Notes %></td>
+                                    <td>
+                                        <div class="btn btn-group-xs">
+                                        <% if(user.Role<3) {%>
+                                                <button type="button" class="edit btn btn-success" data-id= <%=item.TrackId %> ><i class="fa fa-pencil"></i> Sửa</button>
+                                                <button type="button" class="del btn btn-danger deleteTrack" data-id= <%=item.TrackId %> ><i class="fa fa-trash"></i> Xóa</button>
+                                        <% }else if(user.Id==item.Id){ %>
+                                        <button type="button" class="edit btn btn-success"  data-id= <%=item.TrackId %> ><i class="fa fa-pencil"></i> Sửa</button>
+                                        <%} %>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <%}) %>
+                       
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <!-- end row -->
+            <!-- end row -->
+
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+<!--
+    <footer class="footer text-right">
+        <div class="btn-all-group spacer">
+            <button type="button" class="btn btn-default">Code by <i>ThanhTD</i></button>
+            <button type="button" class="btn btn-default" id="downloadTrack"><i class="fa fa-download"></i>Tải về</button>
+            <input type="file" class="filestyle" data-input="false" id="importTrack" data-buttontext="Import Track" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);"><div class="bootstrap-filestyle input-group"><span class="group-span-filestyle " tabindex="0"><label for="importTrack" class="btn btn-secondary "><span class="icon-span-filestyle fas fa-folder-open"></span> <span class="buttonText">Import Track</span></label></span></div>
+        </div>
+    </footer>
+-->
+</div>

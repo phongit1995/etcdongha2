@@ -1,0 +1,272 @@
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title float-left">Quản lý đơn hàng</h4>
+
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item"><a href="/">Quản Lý</a></li>
+                            <li class="breadcrumb-item"><a href="/saleoff">Đơn hàng</a></li>
+                            
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-12"> 
+                            <div class="card-box ribbon-box">
+                                    <div class="ribbon ribbon-success"><i class="fa fa-search"></i> Tìm kiếm:</div>
+                            <div class="card-box table-responsive text-center">
+                                    <div style="margin-top: 10px;" class="seach-form">
+                                        <div class="row">
+                                                <div class="input-group col-md-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Mã đơn hàng:</div>
+                                                        </div>
+                                                        <input id="LicensePlatesSearch" type="text" class="form-control" placeholder="VD:TM-0001">
+                                                    </div>
+                                       
+                                            <div class="col-md-3">
+                                                    <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                            <span class="input-group-text">Từ ngày:</span>
+                                                            </div>
+                                                            <input id="DateStartSearch" type="text" class="form-control dateinput flatpickr-input"  readonly="readonly">
+                                                        </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                    <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                            <span class="input-group-text">Đến ngày:</span>
+                                                            </div>
+                                                            <input id="DateEndSearch" type="text" class="form-control dateinput flatpickr-input"  readonly="readonly">
+                                                        </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                    <div class="input-group" >
+                                                        <div class="input-group-prepend"><span class="input-group-text">Nhân viên:</span></div>
+                                                        <select class="form-control" id="TypeOffSaleOffSearch" name="TypeOffSaleOffSearch">
+                                                                <option value="all"">Tất cả</option>
+                                                            <% listTypeOffSaleOff.forEach((item)=>{ %>
+                                                                    <option value="<%=item.TypeOfSaleOffID%>"><%=item.TypeOfSaleOffName%></option>
+                                                            <% }) %>
+                                                        </select>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top:20px">
+                                            <div class="col-md-8">
+                                                <div class="message-search"></div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-success waves-effect btn-search-form "><i class="fa fa-search"></i> Tìm Kiếm</button>
+                                                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Thêm mới</button>
+                                                            
+                                                <!--<button class="btn btn-success" type="button" id="addTrack" data-toggle="modal" data-target="#addForm"><i class="fa fa-plus"></i> Thêm xe</button>-->
+                                                <button type="button" class="btn btn-purple waves-effect w-md waves-light btn-clear-search"><i class="fa fa-spinner"></i> Làm lại</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                    </div>
+                </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                        <div class="card-box ribbon-box">
+                                <div class="ribbon ribbon-success">Danh sách giảm giá:</div>
+                            
+                           <div class="card-box table-responsive text-center">
+                        <table id="datatable" class="table table-bordered">
+                            <thead class="title-bg">
+                            <tr>
+                                <th>TT</th>
+                                <th>Nhân viên</th>
+                                <th>Mã đơn hàng</th>
+                                <th>Địa chỉ</th>
+                                <th>Mô tả</th>
+                                <th>Thanh toán</th>
+                                <th>Công nợ</th>
+                                <th>Ảnh</th>
+                                <th>Trạng thái</th>
+                                <th>Thời gian</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% listSaleOff.forEach((item,index)=>{ %>
+                                    <tr>
+                                        <td><%=index+1 %></td>
+                                        <td><%=item.UserName %></td>
+                                        <td><%=item.LicensePlates %></td>
+                                        <td>
+                                            <button type="button" class="btn btn-purple waves-effect waves-light btn-xs" data-toggle="modal" data-target="#accordion-modal">Chi tiết</button>
+                                            <div id="accordion-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content p-0">
+                                                        <div id="accordion">
+                                                            <div class="card">
+                                                                <div class="card-header p-3" id="headingOne">
+                                                                    <h6 class="m-0">
+                                                                        <a href="#collapseOne" class="text-dark" data-toggle="collapse"
+                                                                                aria-expanded="true"
+                                                                                aria-controls="collapseOne">
+                                                                            Địa chỉ VN
+                                                                        </a>
+                                                                    </h6>
+                                                                </div>
+                        
+                                                                <div id="collapseOne" class="collapse show"
+                                                                        aria-labelledby="headingOne" data-parent="#accordion">
+                                                                    <div class="card-body">
+                                                                        Tên Khách hàng: An Tokuda <br />
+                                                                        Phone: 0983 456 789<br />
+                                                                        Address: 68 Hùng vương, Đà Nẵng
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header p-3" id="headingTwo">
+                                                                    <h6 class="m-0">
+                                                                        <a href="#collapseTwo" class="text-dark collapsed" data-toggle="collapse"
+                                                                                aria-expanded="false"
+                                                                                aria-controls="collapseTwo">
+                                                                            Địa chỉ JP
+                                                                        </a>
+                                                                    </h6>
+                                                                </div>
+                                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                                        data-parent="#accordion">
+                                                                    <div class="card-body">
+                                                                        Tên Khách hàng: Shikizai<br />
+                                                                        Điện thoai: 03-3268-4251<br />
+                                                                        Địa chỉ: 162-0812 6-17 Nishigoken, Shinjuku, Tokyo
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                        
+                                                    </div><!-- /.modal-content --></div></div>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-purple waves-effect waves-light btn-xs" data-toggle="modal" data-target="#accordion-modal1">Chi tiết</button>
+                                            <div id="accordion-modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content p-0">
+                                                        <div id="accordion">
+                                                            <div class="card">
+                                                                <div class="card-header p-3" id="headingOne">
+
+                                                                </div>
+                        
+                                                                <div id="collapseOne" class="collapse show"
+                                                                        aria-labelledby="headingOne" data-parent="#accordion">
+                                                                    <div class="card-body">
+                                                                      <!-- Start table-->
+                                                                                                    
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box">
+                                    <h4 class="m-t-0 header-title"><b>Chi tiết hàng hóa</b></h4>
+                                    <p class="text-muted m-b-30 font-13">
+                                        Thông tin đã xuất Bill, nếu có sai lệch vui lòng liên hệ<br />Admin !
+                                    </p>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>TT</th>
+                                                <th>Tên hàng hóa</th>
+                                                <th>Số lượng</th>
+                                                <th>Đơn giá</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Máy pha cà phê Capuchino</td>
+                                                <td>50</td>
+                                                <td>7,000,000</td>
+                                            </tr>
+                                             <tr>
+                                                <td colspan="1"><b>Tổng:</b></td>
+                                                <td colspan="3"><b><font color="red">35,000,000 (VNĐ)</font></b></td>
+                                                
+                                                
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end table -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                        
+                                                    </div><!-- /.modal-content --></div></div>       
+
+
+                                        </td>
+                                        <td>20,000,000</td>
+                                        <td><font color="red">15,000,000</font></td>
+                                        <td><i class="fa fa-eye show-image"  data-link="<%=item.Image%>" ></i></td>
+                                        <td>
+                                        
+                                            <select>
+                                                <option>Đang giao</option>
+                                                <option>Thành công</option>
+                                                <option>Hủy đơn</option>
+                                            </select>
+                                        </td>
+                                        <td><%=moment(item.DateEnd).tz("Asia/Bangkok").format("DD-MM-YYYY")  %></td>
+                                        
+                                        
+                                        
+                                        <td>
+                                            <div class="btn-group dropdown">
+                                                <% if(user.Role<3) {%>
+                                                <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+                                                    <button type="button" class="edit  dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-pencil"></i> Sửa</button>
+                                                    <button type="button" class="del  deleteSaleOff dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-trash"></i> Xóa</button>
+                                                       
+                                                 </div>
+                                                <%} %>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <%}) %>
+                            </tbody>
+                        </div>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- end row -->
+            <!-- end row -->
+
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    <footer class="footer text-right">
+        <div class="btn-all-group spacer">
+            <button type="button" class="btn btn-default" id="downloadTrack"><i class="fa fa-download"></i>Tải về</button><br />
+            ©2020 Etcdongha.com. All rights reserved. Code/dthnaht
+                   </div>
+    </footer>
+
+</div>

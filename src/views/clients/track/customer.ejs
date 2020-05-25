@@ -1,0 +1,146 @@
+<div id="editForm" class="modal fade in" role="dialog" style="display: none; padding-right: 15px;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                 <h4 class="modal-title">Cập nhật xe vượt trạm</h4>
+             </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-md-10">
+                         <div class="form-group">
+                             <label for="field-3" class="control-label">Biển số xe:</label>
+                             <input type="text" class="form-control" id="LicensePlatesEdit" placeholder="">
+                         </div>
+                     </div>
+ 
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Tên khách hàng:</label>
+                             <input type="text" class="form-control" id="NameCustomerEdit" placeholder="">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Làn:</label>
+                             <select class="form-control" id="LaneEdit" name="Lane">
+                                <% listLane.forEach((item)=>{ %>
+                                    <option value="<%=item.LaneID%>"><%=item.LaneName%></option>
+                               <% })%>
+                            </select>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-4" class="control-label">Thời gian:</label>
+                             <input type="text" class="form-control" id="TrackTimeEdit" placeholder="">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-4" class="control-label">Mệnh giá:</label>
+                             <select class="form-control" id="FeeEdit" name="Fee">
+                                <% listFee.forEach((item)=>{ %>
+                                    <option value="<%=item.IdFee%>"><%=item.FeeNumbers%></option>
+                               <% })%>
+                            </select>
+                         </div>
+                     </div>    
+                 </div>
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="form-group no-margin">
+                             <label for="field-7" class="control-label">Ghi chú:</label>
+                             <textarea class="form-control" id="NotesEdit" placeholder=""></textarea>
+                             <input type="hidden" id="idTrackEdit"  />
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                 <button type="button" class="btn btn-success waves-effect waves-light" id="UpdateTrack">Lưu thay đổi</button>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- sample modal content -->
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                <h4 class="modal-title">Thêm xe vượt trạm</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-3" class="control-label">Biển số xe:</label>
+                            <div>
+                                <input type="text" class="form-control" id="LicensePlates" placeholder="" style="display: inline;width: 80%">
+                                <button id="tracksuggesst">Tìm Kiếm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Tên khách hàng:</label>
+                            <input type="text" class="form-control" id="NameCustomers" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Làn:</label>
+                            <select class="form-control" id="TypeOfLanetAdd" name="LaneAdd">
+                                <% listLane.forEach((item)=>{ %>
+                                    <option value="<%=item.LaneID%>"><%=item.LaneName%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Thời gian:</label>
+                            <input type="text" class="form-control datetimeinput" id="TrackTime" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Mệnh giá:</label>
+                            <select class="form-control" id="TypeOfTicketAdd" name="Fee">
+                                <% listFee.forEach((item)=>{ %>
+                                    <option value="<%=item.IdFee%>"><%=item.FeeNumbers%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Ghi chú:</label>
+                            <textarea class="form-control" id="Notes" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal" id="closeModalAdd">Tắt</button>
+                <button type="button" class="btn btn-success waves-effect waves-light add-track" >Lưu</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->

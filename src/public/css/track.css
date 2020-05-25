@@ -1,0 +1,31 @@
+.text-uppercase{
+    float: left;
+}
+
+.border{
+    height: 4px;
+    width: 48px;
+    border-radius: 5px;
+    background-color: #4489e4;
+    border:1px solid #dee2e6!important;
+}
+
+ .title-bg{
+     background-color:#24a15c ;
+     color:#ffffff
+     }
+
+.title-etc{
+    font-size: 20px;
+    color:white;
+    margin-left: 20px;
+    font:bold;
+}
+.ribbon{
+    background-color:#24a15c ;
+}
+ 
+.ribbon-box .ribbon-success {
+    background: #24a15c ;
+}
+ 

@@ -1,0 +1,379 @@
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title float-left">Danh Sách Giảm Giá</h4>
+
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item"><a href="/">Quản Lý</a></li>
+                            <li class="breadcrumb-item"><a href="/saleoff">Giảm Giá</a></li>
+                            
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-12"> 
+                            <div class="card-box ribbon-box">
+                                    <div class="ribbon ribbon-success"><i class="fa fa-search"></i> Tìm kiếm thông tin:</div>
+                            <div class="card-box table-responsive text-center">
+                                    <div style="margin-top: 10px;" class="seach-form">
+                                        <div class="row">
+                                                <div class="input-group col-md-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Biển số:</div>
+                                                        </div>
+                                                        <input id="LicensePlatesSearch" type="text" class="form-control" placeholder="VD:74A99999">
+                                                    </div>
+                                       
+                                                <div class="col-md-3">
+                                                        <div class="input-group" >
+                                                            <div class="input-group-prepend"><span class="input-group-text">Trạm:</span></div>
+                                                            <select class="form-control" id="StationsSearch" name="StationsSearch">
+                                                                    <option value="all"">TẤT CẢ</option>
+                                                                    <% listStations.forEach((item)=>{ %>
+                                                                        <option value="<%=item.StationsID%>"><%=item.StationsName%></option>
+                                                                   <% })%>
+                                                            </select>
+                                                        </div>
+                                                </div>
+                                            <div class="col-md-3">
+                                                    <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                            <span class="input-group-text">Ngày kết thúc:</span>
+                                                            </div>
+                                                            <input id="DateEndSearch" type="text" class="form-control dateinputSearch flatpickr-input"  readonly="readonly">
+                                                        </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-success waves-effect btn-search-form "><i class="fa fa-search"></i> Tìm Kiếm</button>
+                                                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Thêm mới</button>
+                                                            
+                                                <!--<button class="btn btn-success" type="button" id="addTrack" data-toggle="modal" data-target="#addForm"><i class="fa fa-plus"></i> Thêm xe</button>-->
+                                                <button type="button" class="btn btn-purple waves-effect w-md waves-light btn-clear-search"><i class="fa fa-spinner"></i> Làm lại</button>
+                                           
+                                            </div>   
+                                        </div>
+                                        <div class="row" style="margin-top:20px">
+                                            <div class="col-md-8">
+                                                <div class="message-search"></div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                    </div>
+                </div>
+<!-- -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box ribbon-box">
+            <div class="ribbon ribbon-success"><i class="fa fa-search"></i> Tìm kiếm thông tin:</div>
+            <div class="card-box table-responsive text-center">
+        <p class="">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                        Danh sách xe
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link notification">
+                        &#8209;Sắp hết hạn
+                        <span class="badge"><%=listTicketExpriedDay.length%></span>
+                    </a>
+                </li>
+            </ul>
+            <!-- Danh sach xe-->
+            <div class="tab-content">
+                <div class="tab-pane show active" id="home">
+                    <table id="datatable" class="table table-bordered">
+                        <thead class="title-bg">
+                        <tr>
+                            <th>STT</th>
+                            <th>Biển số</th>
+                            <th>Trạm</th>
+                            <th>Loại vé</th>
+                            <th>Giá tiền</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Ghi Chú</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <% listTicketMonth.forEach((item,index)=>{ %>
+                                <tr>
+                                    <td><%=index+1%></td>
+                                    <td><%=item.LicensePlates%></td>
+                                    <td><%=item.StationsName%></td>
+                                    <td><%=item.TypeOfTicketName%></td>
+                                    <td><%=item.Money %></td>
+                                    <td><%=moment(item.DateStart).tz("Asia/Bangkok").format("DD-MM-YYYY") %></td>
+                                    <td><%=moment(item.DateEnd).tz("Asia/Bangkok").format("DD-MM-YYYY") %></td>
+                                    <td><%=item.Notes %></td>
+                                    <td width="5%">
+                                        <div class="btn btn-group-xs">
+                                            <% if(user.Role<3) {%>
+                                                <button type="button" class="edit btn btn-success" data-id= <%=item.TicketId %> ><i class="fa fa-pencil"></i> Sửa</button>
+                                                <button type="button" class="del btn btn-danger deleteTicket" data-id= <%=item.TicketId %> ><i class="fa fa-trash"></i> Xóa</button>
+                                            <% }else if(user.Id==item.Id){ %>
+                                            <button type="button" class="edit btn btn-success"  data-id= <%=item.TicketId %> ><i class="fa fa-pencil"></i> Sửa</button>
+                                            <%} %>
+                                        </div>
+                                    </td>
+                                </tr>
+                           <% })%>     
+                        </tbody>
+                    </div>
+                    </table> 
+                </div>
+                <!-- End danh sach xe-->
+                <div class="tab-pane" id="profile">
+                   <!-- Ds sap het ve-->
+                   <div class="tab-content">
+                    <div class="tab-pane show active" id="home">
+                        <table  class="table table-bordered">
+                            <thead class="title-bg">
+                            <tr>
+                                <th>STT</th>
+                                <th>Biển số</th>
+                                <th>Trạm</th>
+                                <th>Loại vé</th>
+                                <th>Giá tiền</th>
+                                <th>Ngày bắt đầu</th>
+                                <th>Ngày kết thúc</th>
+                                <th>Ghi Chú</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% listTicketExpriedDay.forEach((item,index)=>{ %>
+                                    <tr>
+                                        <td><%=index+1%></td>
+                                        <td><%=item.LicensePlates%></td>
+                                        <td><%=item.StationsName%></td>
+                                        <td><%=item.TypeOfTicketName%></td>
+                                        <td><%=item.Money %></td>
+                                        <td><%=moment(item.DateStart).tz("Asia/Bangkok").format("DD-MM-YYYY") %></td>
+                                        <td><%=moment(item.DateEnd).tz("Asia/Bangkok").format("DD-MM-YYYY") %></td>
+                                        <td><%=item.Notes %></td>
+                                    </tr>
+                               <% })%>  
+                               
+                            </tbody>
+                        </div>
+                        </table> 
+                    </div>    
+                   <!--End Ds sap het ve-->
+                </div>
+
+            </p>
+        </div>
+    </div>
+<!-- -->
+    <footer class="">
+        <div class="btn-all-group spacer">
+            <input type="file" class="filestyle" id="importTicket" >
+        </div>
+    </footer>
+</div>
+<!-- Css -->
+
+
+<!-- FORM THEM,UPDATE THONG TIN -->
+<!-- Modal them moi - update-->
+<div id="editForm" class="modal fade in" role="dialog" style="display: none; padding-right: 15px;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                 <h4 class="modal-title">Sửa Thông Tin Vé Tháng/Quý</h4>
+             </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-3" class="control-label">Biển số xe:</label>
+                             <input type="text" class="form-control" id="LicensePlatesNameEdit" placeholder="">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Loại vé:</label>
+                            <select class="form-control" id="TypeOfTicketEdit" name="TypeOfTicketAdd">
+                                <% listTypeOfTickets.forEach((item)=>{ %>
+                                    <option value="<%=item.TypeOfTicketID%>"><%=item.TypeOfTicketName%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>
+ 
+                 </div>
+                 <div class="row">
+                     
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label for="field-2" class="control-label">Giá tiền:</label>
+                             <input type="text" class="form-control" id="MoneyEdit" placeholder="">
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Trạm:</label>
+                            <select class="form-control" id="StationsEdit" name="StationsEdit">
+                               <% listStations.forEach((item)=>{ %>
+                                   <option value="<%=item.StationsID%>"><%=item.StationsName%></option>
+                              <% })%>
+                           </select>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Ngày bắt đầu:</label>
+                            <input type="text" class="form-control dateinput" id="dateStartEdit" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Ngày kết thúc:</label>
+                            <input type="text" class="form-control dateinput" id="dateEndEdit" placeholder="">
+                        </div>
+                    </div>   
+                </div>
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Ghi chú:</label>
+                            <textarea class="form-control" id="NotesEdit" placeholder=""></textarea>
+                            <input type="hidden"  id="idTicketEdit">
+                        </div>
+                    </div>
+                 </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                 <button type="button" class="btn btn-success waves-effect waves-light saveEdit">Lưu thay đổi</button>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add modal content -->
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               <!-- Để ẩn đi vậy nha--><!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                <h4 class="modal-title">Thêm vé tháng/quý</h4>
+            </div>
+            <div class="modal-body">
+ 
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Biển số xe:</label>
+                            <input type="text" class="form-control" id="LicensePlatesName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Loại vé:</label>
+                            <select class="form-control" id="TypeOfTicketAdd" name="TypeOfTicketAdd">
+                                <% listTypeOfTickets.forEach((item)=>{ %>
+                                    <option value="<%=item.TypeOfTicketID%>"><%=item.TypeOfTicketName%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Giá tiền:</label>
+                            <input type="number" class="form-control" id="MoneyAdd" >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-2" class="control-label">Trạm:</label>
+                            <select class="form-control" id="StationsAdd" name="StationsAdd">
+                                <% listStations.forEach((item)=>{ %>
+                                    <option value="<%=item.StationsID%>"><%=item.StationsName%></option>
+                               <% })%>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Ngày bắt đầu:</label>
+                            <input type="text" class="form-control dateinput" id="dateStartAdd" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-4" class="control-label">Ngày kết thúc:</label>
+                            <input type="text" class="form-control dateinput" id="dateEndAdd" placeholder="">
+                        </div>
+                    </div>   
+                     
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Ghi chú:</label>
+                            <textarea class="form-control" id="NotesAdd" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tắt</button>
+                <button type="button" class="btn btn-success waves-effect waves-light" id="AddTicket">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.modal -->
+
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .notification {
+      background-color: #ccc;
+      color: white;
+      text-decoration: none;
+      padding: 15px 26px;
+      position: relative;
+      display: inline-block;
+      border-radius: 2px;
+    }
+    
+    .notification:hover {
+      background: red;
+    }
+    
+    .notification .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      padding: 5px 10px;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+    }
+    </style>
+
+<!-- End modal-->
