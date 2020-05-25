@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    const URLIMAGES = 'http://wooeu.net/home/uploads/';
+    const URLIMAGES = '/images/storage/';
     let table = $('#datatable').DataTable({
         "searching": false
     });
@@ -24,17 +24,23 @@ $(document).ready(function(){
         let DateDeli = $('#DateDeli').val();
         let File = $('#SaleoffImage')[0].files[0];
         console.log(TrackingNo ,StatusPro,AddVn,PhoneVn,AddJp,PhoneJp,Notting,NameProduct,QtyPro,RatePro,TickMoney,DateDeli);
-        if(LicensePlates=='' || DateStart==''||DateEnd==''){
+        if(TrackingNo=='' || AddVn==''||PhoneVn==''){
             return alertify.error('Vui Lòng Nhập Đủ Thông Tin');
         }
         let formData = new FormData();
-        formData.append('LicensePlates',LicensePlates);
-        formData.append('TypeOfSaleOff',TypeOfSaleOff);
-        formData.append('Denominations',Denominations);
-        formData.append('DateStart',DateStart);
-        formData.append('DateEnd',DateEnd);
-        formData.append('Notes',Notes);
-        formData.append('FileImages',File);
+        formData.append('TrackingNo',TrackingNo);
+        formData.append('StatusPro',StatusPro);
+        formData.append('AddVn',AddVn);
+        formData.append('PhoneVn',PhoneVn);
+        formData.append('AddJp',AddJp);
+        formData.append('PhoneJp',PhoneJp);
+        formData.append('Notting',Notting);
+        formData.append('NameProduct',NameProduct);
+        formData.append('QtyPro',QtyPro);
+        formData.append('RatePro',RatePro);
+        formData.append('TickMoney',TickMoney);
+        formData.append('DateDeli',DateDeli);
+        formData.append("FileImages",File)
         $.ajax({
             url:'/saleoff/create',
             method:'post',
@@ -43,19 +49,19 @@ $(document).ready(function(){
             contentType: false,
             processData: false,
             success:function(data){
-                // if(!data.error){
-                //     LoadSaleOff();
+                if(!data.error){
+                    // LoadSaleOff();
                     
-                //     Swal.fire({
-                //         position: 'center',
-                //         icon: 'success',
-                //         title: 'Thêm Thành Công',
-                //         showConfirmButton: false,
-                //         timer: 1000
-                //     })
-                //     ClearInput();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Thêm Thành Công',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                    ClearInput();
                    
-                // }
+                }
             }
         })
 

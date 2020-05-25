@@ -21,6 +21,7 @@ const SaleOffFields = {
     PhoneJp:'PhoneJp',
     Notting:'Notting',
     NameProduct:'NameProduct',
+    SaleoffImage:'SaleoffImage',
     QtyPro:'QtyPro',
     RatePro:'RatePro',
     TickMoney:'TickMoney',
@@ -94,6 +95,9 @@ const  SaleOffDB=  db.define('SaleOff',{
         type:Sequelize.TEXT,
     },
     [SaleOffFields.Notting]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.SaleoffImage]:{
         type:Sequelize.TEXT,
     },
     [SaleOffFields.NameProduct]:{

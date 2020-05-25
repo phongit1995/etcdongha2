@@ -123,7 +123,7 @@
                                         <tr>
                                             <td><%=index+1 %></td>
                                             <td><%=item.UserName %></td>
-                                            <td><%=item.LicensePlates %></td>
+                                            <td><%=item.TrackingNo %></td>
                                             <td>
                                                 <button type="button" class="btn btn-purple waves-effect waves-light btn-xs" data-toggle="modal" data-target="#accordion-modal">Chi tiết</button>
                                                 <div id="accordion-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -237,9 +237,9 @@
     
     
                                             </td>
-                                            <td>20,000,000</td>
+                                            <td><%=item.TickMoney%></td>
                                             <td><font color="red">15,000,000</font></td>
-                                            <td><i class="fa fa-eye show-image"  data-link="<%=item.Image%>" ></i></td>
+                                            <td><i class="fa fa-eye show-image"  data-link="<%=item.SaleoffImage%>" ></i></td>
                                             <td>
                                             
                                                 <select>

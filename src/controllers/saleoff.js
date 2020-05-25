@@ -13,7 +13,7 @@ let index = async (req,res)=>{
 }
 let create = async (req,res)=>{
     try{
-        console.log(req.user.Id);
+        console.log(req.body);
         let result = await  SaleOffModel.create(req.body,req.user.Id,req.file);
        ResponseHelper.json(res,null,result);
     }

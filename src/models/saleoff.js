@@ -7,7 +7,7 @@ let create = async (data,IdUser,Image)=>{
     data[SaleOffFields.CreateByUser] = IdUser;
     data[SaleOffFields.SaleOffID]= Texthelper.genId();
     if(Image){
-        data[SaleOffFields.Image] = Image.filename ;
+        data[SaleOffFields.SaleoffImage] = Image.filename ;
     }
     // console.log(data);
     // console.log(data);
@@ -17,7 +17,7 @@ let create = async (data,IdUser,Image)=>{
 let GetListSaleOff = async (Role,Group)=>{
     let Sql= `select SaleOff.SaleOffID ,SaleOff.LicensePlates, SaleOff.NameCustomer, SaleOff.CreateByUser , SaleOff.
         Image , SaleOff.DateStart , SaleOff.DateEnd, SaleOff.Notes, 
-        SaleOff.AddVn , SaleOff.PhoneVn ,   SaleOff.AddJp ,   SaleOff.PhoneJp ,SaleOff.Notting ,SaleOff.NameProduct ,SaleOff.QtyPro ,SaleOff.RatePro ,SaleOff.TickMoney , SaleOff.DateDeli ,         
+        SaleOff.TrackingNo ,SaleOff.AddVn , SaleOff.PhoneVn ,   SaleOff.AddJp ,   SaleOff.PhoneJp ,SaleOff.Notting ,SaleOff.NameProduct ,SaleOff.QtyPro ,SaleOff.RatePro ,SaleOff.TickMoney , SaleOff.DateDeli , SaleOff.SaleoffImage ,           
         TypeOfSaleOff.TypeOfSaleOffID , TypeOfSaleOff.TypeOfSaleOffName, Denominations.DenominationsID , Denominations.DenominationsNumbers, Users.UserName,Users.Id from SaleOff  LEFT JOIN TypeOfSaleOff on SaleOff.TypeOfSaleOff = TypeOfSaleOff.TypeOfSaleOffID LEFT JOIN Users on SaleOff.CreateByUser = Users.Id LEFT JOIN 
         Denominations on SaleOff.Denominations = Denominations.DenominationsID where SaleOff.Status =1`
         if(Role!=1){
