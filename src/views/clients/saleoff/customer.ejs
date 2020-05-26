@@ -179,14 +179,14 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Số lượng:</label>
-                            <input class="form-control" id="QtyPro" name="">
+                            <input class="form-control" id="QtyPro" name="" type="number">
                             </input>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Đơn giá:</label>
-                            <input class="form-control" id="RatePro" name="">
+                            <input class="form-control" id="RatePro" name="" type="number">
                             </input>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Đặt cọc:</label>
-                            <input class="form-control" id="TickMoney" name="">
+                            <input class="form-control" id="TickMoney" name="" type="number">
                         </input>
                         </div>
                     </div>
@@ -221,15 +221,18 @@
                             <fieldset title="3">
                                 <legend>Xác nhận thông tin</legend>
                 <div class="row">
-                    <div class="row m-t-30">
+                    <div class="row m-t-30 col-12">
                         <div class="col-6">
                             <h5>Billing Address</h5>
 
-                            <address class="line-h-24">
-                                Stanley Jones<br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            <address class="line-h-24" >
+                                <p id="addressBill">
+                                    Stanley Jones<br>
+                                    795 Folsom Ave, Suite 600<br>
+                                    San Francisco, CA 94107<br>
+                                </p>
+                                
+                                <abbr title="Phone">Phone:</abbr> <span id="phoneBill"></span>
                             </address>
 
                         </div>
@@ -238,22 +241,24 @@
                             <h5>Shipping Address</h5>
 
                             <address class="line-h-24">
-                                Stanley Jones<br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                                <p id="addressShip">
+                                    Stanley Jones<br>
+                                    795 Folsom Ave, Suite 600<br>
+                                    San Francisco, CA 94107<br>
+                                </p>
+                                <abbr title="Phone">Phone:</abbr> <span id="phoneShip"></span>
                             </address>
 
                         </div>
                     </div>
-                    <div class="row m-t-30">
+                    <!-- <div class="row m-t-30">
                         <div class="col-6">
                             <address class="line-h-24">
                                <img scr="https://lolskin.weblog.vc/img/images/loading/Ahri_15.jpg" width="50%"></img>
                             </address>
 
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
@@ -268,14 +273,14 @@
                                     <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>
+                                        <td id="ProductName">
                                             <b>Laptop</b> <br/>
                                             Brand Model VGN-TXN27N/B
                                             11.1" Notebook PC
                                         </td>
-                                        <td>1</td>
-                                        <td>$1799</td>
-                                        <td class="text-right">$1799</td>
+                                        <td id="ProductNumber">1</td>
+                                        <td id="ProductPrice">$1799</td>
+                                        <td class="text-right" id="ProductToTal">$1799</td>
                                     </tr>
                                      </tbody>
                                 </table>

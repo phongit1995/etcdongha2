@@ -59,7 +59,9 @@ $(document).ready(function(){
                         showConfirmButton: false,
                         timer: 1000
                     })
-                    ClearInput();
+                   setTimeout(()=>{
+                        location.reload();
+                   },500)
                    
                 }
             }
@@ -153,7 +155,9 @@ $(document).ready(function(){
                                 'Xóa Thành Công !',
                                 'success'
                               )
-                              LoadSaleOff();
+                              setTimeout(()=>{
+                                location.reload();
+                                },500)
                         }
                         else{
                             Swal.fire({

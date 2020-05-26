@@ -7,7 +7,7 @@ let create = async (data,IdUser,Image)=>{
     data[SaleOffFields.CreateByUser] = IdUser;
     data[SaleOffFields.SaleOffID]= Texthelper.genId();
     if(Image){
-        data[SaleOffFields.SaleoffImage] = Image.filename ;
+        data[SaleOffFields.SaleoffImage] = data[SaleOffFields.TrackingNo]+ Image.filename ;
     }
     // console.log(data);
     // console.log(data);
