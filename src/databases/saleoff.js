@@ -16,6 +16,7 @@ const SaleOffFields = {
     TrackingNo:'TrackingNo',
     StatusPro:'StatusPro',
     AddVn:'AddVn',
+    ForUser:"ForUser",
     PhoneVn:'PhoneVn',
     AddJp :'AddJp',
     PhoneJp:'PhoneJp',
@@ -77,6 +78,9 @@ const  SaleOffDB=  db.define('SaleOff',{
         }
     },
     [SaleOffFields.StatusPro]:{
+        type:Sequelize.TEXT,
+    },
+    [SaleOffFields.ForUser]:{
         type:Sequelize.TEXT,
     },
     [SaleOffFields.TrackingNo]:{

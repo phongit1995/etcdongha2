@@ -239,19 +239,20 @@
                         <div class="form-group">
                             <label for="field-2" class="control-label">Trạng thái:</label>
                             <select class="form-control" id="StatusPro" name="StatusPro">
-                                <option value="Đang giao">Đang giao</option>
-                                <option value="Thành công">Thành công</option>
-                                <option value="Hủy">Hủy </option>
+                                <option value="1">Đang giao</option>
+                                <option value="2">Thành công</option>
+                                <option value="3">Hủy</option>
                         </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Nhân viên:</label>
-                            <select class="form-control" id="Denominations" name="Denominations">
-                                <option value="">Tieuman</option>
-                                <option value="">Abc</option>
-                                <option value="">Dad</option>
+                            <select class="form-control" id="ForUser" name="Denominations">
+                                <%
+                                listUser.forEach((item)=>{ %>
+                                    <option value="<%=item.Id%>"><%=item.UserName%></option>
+                                <%})%>
                         </select>
                         </div>
                     </div>

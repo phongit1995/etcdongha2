@@ -18,6 +18,7 @@ $(document).ready(function(){
         let PhoneJp = $('#PhoneJp').val();
         let Notting = $('#Notting').val();
         let NameProduct = $('#NameProduct').val();
+        let ForUser = $("#ForUser").val();
         let QtyPro = $('#QtyPro').val();
         let RatePro = $('#RatePro').val();
         let TickMoney = $('#TickMoney').val();
@@ -34,6 +35,7 @@ $(document).ready(function(){
         formData.append('PhoneVn',PhoneVn);
         formData.append('AddJp',AddJp);
         formData.append('PhoneJp',PhoneJp);
+        formData.append('ForUser',ForUser);
         formData.append('Notting',Notting);
         formData.append('NameProduct',NameProduct);
         formData.append('QtyPro',QtyPro);
