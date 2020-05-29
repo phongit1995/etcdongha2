@@ -28,7 +28,7 @@
 
                                 <div class="input-group col-md-3">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">Tracking No:</div>
+                                        <div class="input-group-text">Biển số:</div>
                                     </div>
                                     <input id="LicensePlatesSearch" type="text" class="form-control" placeholder="VD:74A99999">
                                 </div>
@@ -122,7 +122,7 @@
                                     <% listSaleOff.forEach((item,index)=>{ %>
                                         <tr>
                                             <td><%=index+1 %></td>
-                                            <td><%=item.Denominations %></td>
+                                            <td><%=item.UserName %></td>
                                             <td><%=item.TrackingNo %></td>
                                             <td>
                                                 <button type="button" class="btn btn-purple waves-effect waves-light btn-xs" data-toggle="modal" data-target="#accordion-modal">Chi tiết</button>
@@ -144,9 +144,9 @@
                                                                     <div id="collapseOne" class="collapse show"
                                                                             aria-labelledby="headingOne" data-parent="#accordion">
                                                                         <div class="card-body">
-                                                                            Tên Khách hàng: <%=item.Denominations %> <br />
-                                                                            Phone: <%=item.PhoneVn %><br />
-                                                                            Address: <%=item.AddVn %>
+                                                                            Tên Khách hàng: An Tokuda <br />
+                                                                            Phone: 0983 456 789<br />
+                                                                            Address: 68 Hùng vương, Đà Nẵng
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -163,9 +163,9 @@
                                                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                                                             data-parent="#accordion">
                                                                         <div class="card-body">
-                                                                            Tên Khách hàng: <%=item.Denominations %><br />
-                                                                            Điện thoai: <%=item.PhoneJp %><br />
-                                                                            Địa chỉ: <%=item.AddJp %>
+                                                                            Tên Khách hàng: Shikizai<br />
+                                                                            Điện thoai: 03-3268-4251<br />
+                                                                            Địa chỉ: 162-0812 6-17 Nishigoken, Shinjuku, Tokyo
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -202,7 +202,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th>TT</th>
-                                                    <th>Tên sản phẩm</th>
+                                                    <th>Tên hàng hóa</th>
                                                     <th>Số lượng</th>
                                                     <th>Đơn giá</th>
                                                 </tr>
@@ -210,13 +210,13 @@
                                                 <tbody>
                                                 <tr>
                                                     <th scope="row">1</th>
-                                                    <td><%=item.NameProduct %></td>
-                                                    <td><%=item.QtyPro %></td>
-                                                    <td><%=item.RatePro %></td>
+                                                    <td>Máy pha cà phê Capuchino</td>
+                                                    <td>50</td>
+                                                    <td>7,000,000</td>
                                                 </tr>
                                                  <tr>
                                                     <td colspan="1"><b>Tổng:</b></td>
-                                                    <td colspan="3"><b><font color="red"><%=item.QtyPro * item.RatePro%></font></b></td>
+                                                    <td colspan="3"><b><font color="red">35,000,000 (VNĐ)</font></b></td>
                                                     
                                                     
                                                 </tr>
@@ -238,7 +238,7 @@
     
                                             </td>
                                             <td><%=item.TickMoney%></td>
-                                            <td><font color="red"></font></td>
+                                            <td><font color="red">15,000,000</font></td>
                                             <td><i class="fa fa-eye show-image"  data-link="<%=item.SaleoffImage%>" ></i></td>
                                             <td>
                                             
@@ -248,8 +248,8 @@
                                                     <option>Hủy đơn</option>
                                                 </select>
                                             </td>
-                                            <td><%=(item.QtyPro * item.RatePro) - (item.TickMoney)%></td>
-                                            <td><%=moment(item.DateDeli).tz("Asia/Bangkok").format("DD-MM-YYYY")  %></td>
+                                            <td></td>
+                                            <td><%=moment(item.DateEnd).tz("Asia/Bangkok").format("DD-MM-YYYY")  %></td>
                                             
                                             
                                             
@@ -259,10 +259,9 @@
                                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
     
-                                                        <button type="button" class="edit1  dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-pencil"></i> Sửa</button>
+                                                        <button type="button" class="edit  dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-pencil"></i> Sửa</button>
                                                         <button type="button" class="del  deleteSaleOff dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-trash"></i> Xóa</button>
-                                                        <button type="button" class="edit  dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-pencil"></i> Sửa-nhan vien</button>
-                                                          
+                                                           
                                                      </div>
                                                     <%} %>
                                                 </div>

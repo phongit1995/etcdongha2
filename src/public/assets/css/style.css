@@ -1026,7 +1026,20 @@ a:focus {
   margin-bottom: 20px;
   background-color: #ffffff;
 }
-
+.card-box-edit {
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+}
+.card-box-edit-nhanvien {
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+}
 /* =============
    Extras
 ============= */
@@ -6974,6 +6987,11 @@ ul.sitemap-icon ul li a {
     margin-top: 0;
   }
   .card-box, body {
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .card-box-edit, body {
     border: none;
     padding: 0;
     margin-bottom: 0;
