@@ -1,216 +1,6 @@
-<!-- Modal Edit nhan vien -->
-<div id="editForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card-box-edit-nhanvien">
-                        <h4 class="m-t-0 header-title">Thêm mới thông tin</h4>
-                        <p class="text-muted m-b-30 font-13">
-                            Vui lòng điền chính xác các thông tin.
-                        </p>
-                        <form id="wizard-callbacks-edit-nhanvien">
-                            <fieldset title="1">
-                                <legend>Thông tin vận chuyển</legend>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Mã đơn hàng:</label>
-                            <input class="form-control" id="TrackingNo" name="">
-                        </input>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Trạng thái:</label>
-                            <select class="form-control" id="StatusPro" name="StatusPro">
-                                <option value="Đang giao">Đang giao</option>
-                                <option value="Thành công">Thành công</option>
-                                <option value="Hủy">Hủy </option>
-                        </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Nhân viên:</label>
-                            <select class="form-control" id="Denominations" name="Denominations">
-                                <option value="">Tieuman</option>
-                                <option value="">Abc</option>
-                                <option value="">Dad</option>
-                        </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Vận chuyển VN:</label>
-                            <input class="form-control" id="AddVn" name="" placeholder="Địa chỉ VN">
-                        </input>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">&nbsp;</label>
-                            <input class="form-control" id="PhoneVn" name="" placeholder="Điện thoại VN">
-                            </input>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Vận chuyển JP:</label>
-                            <input class="form-control" id="AddJp" name="" placeholder="Địa chỉ JP">
-                        </input>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">&nbsp;</label>
-                            <input class="form-control" id="PhoneJp" name="" placeholder="Điện thoại Nhật">
-                            </input>
-                        </div>
-                    </div>
-                </div>
-                     <div class="form-group">
-                                    <label for="aboutme2">Ghi chú:</label>
-                                    <textarea class="form-control" rows="5" id="Notting"></textarea>
-                                </div>
-                            </fieldset>
-                            <fieldset title="2">
-                                <legend>Thông tin hàng hóa</legend>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Tên sản phẩm:</label>
-                            <input class="form-control" id="NameProduct" name="">
-                        </input>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Số lượng:</label>
-                            <input class="form-control" id="QtyPro" name="" type="number" disabled="disabled">
-                            </input>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Đơn giá:</label>
-                            <input class="form-control" id="RatePro" name="" type="number" disabled="disabled">
-                            </input>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Đặt cọc:</label>
-                            <input class="form-control" id="TickMoney" name="" type="number" disabled="disabled">
-                        </input>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Ngày dự kiến giao:</label>
-                            <input type="text" class="form-control dateinput" id="DateDeli" >
-                            </input>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group no-margin">
-                            <label for="field-7" class="control-label">Hình ảnh:</label>
-                            <div id="image-priview-add" style="padding: 5px"></div>
-                            <input type="file" class="form-control"  id="SaleoffImage">
-                        </div>
-                    </div>
-                </div>
-                            </fieldset>
-                            <fieldset title="3">
-                                <legend>Xác nhận thông tin</legend>
-                <div class="row">
-                    <div class="row m-t-30 col-12">
-                        <div class="col-6">
-                            <h5>Billing Address</h5>
-
-                            <address class="line-h-24" >
-                                <p id="addressBill">
-                                   
-                                </p>
-                                
-                                <abbr title="Phone">Phone:</abbr> <span id="phoneBill"></span>
-                            </address>
-
-                        </div>
-
-                        <div class="col-6">
-                            <h5>Shipping Address</h5>
-
-                            <address class="line-h-24">
-                                <p id="addressShip">
-                                    
-                                </p>
-                                <abbr title="Phone">Phone:</abbr> <span id="phoneShip"></span>
-                            </address>
-
-                        </div>
-                    </div>
-                    <!-- <div class="row m-t-30">
-                        <div class="col-6">
-                            <address class="line-h-24">
-                               <img scr="https://lolskin.weblog.vc/img/images/loading/Ahri_15.jpg" width="50%"></img>
-                            </address>
-
-                        </div>
-                    </div> -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table class="table m-t-30">
-                                    <thead>
-                                    <tr><th>#</th>
-                                        <th class="text-center">Tên hàng hóa</th>
-                                        <th class="text-center">Số lượng</th>
-                                        <th class="text-center">Đơn giá</th>
-                                        <th class="text-center">Thành tiền</th>
-                                    </tr></thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td id="ProductName">
-                                            
-                                        </td>
-                                        <td id="ProductNumber"></td>
-                                        <td id="ProductPrice"></td>
-                                        <td class="text-right" id="ProductToTal"></td>
-                                    </tr>
-                                     </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        </div>   
-                    
-                </div>
-                            </fieldset>
-                            <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light stepy-finish"><i class="fa fa-print m-r-5"></i> Print</a>
-                            <button type="button" class="btn btn-success waves-effect waves-light add-saleoff stepy-finish">Lưu</button>
-                            <button type="button" class="btn btn-secondary waves-effect stepy-finish" data-dismiss="modal">Tắt</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End row -->
-        </div>
-    </div>
-</div>
-<!-- End Edit-nhan vien -->
 
 <!-- Modal Edit -->
-<div id="edit1Form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="editForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="row">
@@ -227,14 +17,14 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Mã đơn hàng:</label>
-                            <input class="form-control" id="TrackingNo" name="">
+                            <input class="form-control" id="TrackingNoEdit" name="">
                         </input>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Trạng thái:</label>
-                            <select class="form-control" id="StatusPro" name="StatusPro">
+                            <select class="form-control" id="StatusProEdit" name="StatusPro">
                                 <option value="Đang giao">Đang giao</option>
                                 <option value="Thành công">Thành công</option>
                                 <option value="Hủy">Hủy </option>
@@ -244,7 +34,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Nhân viên:</label>
-                            <select class="form-control" id="Denominations" name="Denominations">
+                            <select class="form-control" id="DenominationsEdit" name="Denominations">
                                 <option value="">Tieuman</option>
                                 <option value="">Abc</option>
                                 <option value="">Dad</option>
@@ -256,14 +46,14 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Vận chuyển VN:</label>
-                            <input class="form-control" id="AddVn" name="" placeholder="Địa chỉ VN">
+                            <input class="form-control" id="AddVnEdit" name="" placeholder="Địa chỉ VN">
                         </input>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-2" class="control-label">&nbsp;</label>
-                            <input class="form-control" id="PhoneVn" name="" placeholder="Điện thoại VN">
+                            <input class="form-control" id="PhoneVnEdit" name="" placeholder="Điện thoại VN">
                             </input>
                         </div>
                     </div>
@@ -272,21 +62,21 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Vận chuyển JP:</label>
-                            <input class="form-control" id="AddJp" name="" placeholder="Địa chỉ JP">
+                            <input class="form-control" id="AddJpEdit" name="" placeholder="Địa chỉ JP">
                         </input>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="field-2" class="control-label">&nbsp;</label>
-                            <input class="form-control" id="PhoneJp" name="" placeholder="Điện thoại Nhật">
+                            <input class="form-control" id="PhoneJpEdit" name="" placeholder="Điện thoại Nhật">
                             </input>
                         </div>
                     </div>
                 </div>
                      <div class="form-group">
                                     <label for="aboutme2">Ghi chú:</label>
-                                    <textarea class="form-control" rows="5" id="Notting"></textarea>
+                                    <textarea class="form-control" rows="5" id="NottingEdit"></textarea>
                                 </div>
                             </fieldset>
                             <fieldset title="2">
@@ -295,21 +85,21 @@
                     <div class="col-md-7">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Tên sản phẩm:</label>
-                            <input class="form-control" id="NameProduct" name="">
+                            <input class="form-control" id="NameProductEdit" name="">
                         </input>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Số lượng:</label>
-                            <input class="form-control" id="QtyPro" name="" type="number">
+                            <input class="form-control" id="QtyProEdit" name="" type="number">
                             </input>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Đơn giá:</label>
-                            <input class="form-control" id="RatePro" name="" type="number">
+                            <input class="form-control" id="RateProEdit" name="" type="number">
                             </input>
                         </div>
                     </div>
@@ -318,14 +108,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Đặt cọc:</label>
-                            <input class="form-control" id="TickMoney" name="" type="number">
+                            <input class="form-control" id="TickMoneyEdit" name="" type="number">
                         </input>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Ngày dự kiến giao:</label>
-                            <input type="text" class="form-control dateinput" id="DateDeli" >
+                            <input type="text" class="form-control dateinput" id="DateDeliEdit" >
                             </input>
                         </div>
                     </div>
@@ -335,7 +125,7 @@
                         <div class="form-group no-margin">
                             <label for="field-7" class="control-label">Hình ảnh:</label>
                             <div id="image-priview-add" style="padding: 5px"></div>
-                            <input type="file" class="form-control"  id="SaleoffImage">
+                            <input type="file" class="form-control"  id="SaleoffImageEdit">
                         </div>
                     </div>
                 </div>
@@ -348,11 +138,11 @@
                             <h5>Billing Address</h5>
 
                             <address class="line-h-24" >
-                                <p id="addressBill">
+                                <p id="addressBillEdit">
                                    
                                 </p>
                                 
-                                <abbr title="Phone">Phone:</abbr> <span id="phoneBill"></span>
+                                <abbr title="Phone">Phone:</abbr> <span id="phoneBillEdit"></span>
                             </address>
 
                         </div>
@@ -361,10 +151,10 @@
                             <h5>Shipping Address</h5>
 
                             <address class="line-h-24">
-                                <p id="addressShip">
+                                <p id="addressShipEdit">
                                     
                                 </p>
-                                <abbr title="Phone">Phone:</abbr> <span id="phoneShip"></span>
+                                <abbr title="Phone">Phone:</abbr> <span id="phoneShipEdit"></span>
                             </address>
 
                         </div>
@@ -391,12 +181,12 @@
                                     <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td id="ProductName">
+                                        <td id="ProductNameEdit">
                                             
                                         </td>
-                                        <td id="ProductNumber"></td>
-                                        <td id="ProductPrice"></td>
-                                        <td class="text-right" id="ProductToTal"></td>
+                                        <td id="ProductNumberEdit"></td>
+                                        <td id="ProductPriceEdit"></td>
+                                        <td class="text-right" id="ProductToTalEdit"></td>
                                     </tr>
                                      </tbody>
                                 </table>
