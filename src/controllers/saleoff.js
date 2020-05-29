@@ -2,14 +2,16 @@ let ResponseHelper = require('./../commons/ResponseHelper');
 let moment = require('moment-timezone');
 let  {GetListDenomintations} = require('./../models/denominations');
 let {getListTypeOffSaleOff} = require('./../models/typeoffsaleoff');
+let {getListUsers} = require("./../models/users");
 let SaleOffModel= require('./../models/saleoff');
 let index = async (req,res)=>{
     let {Group,Role} = req.user ;
-    let [listDenomintations,listTypeOffSaleOff,listSaleOff] = await Promise.all([GetListDenomintations(),getListTypeOffSaleOff(),SaleOffModel.GetListSaleOff(Role,Group)]);
+    let [listDenomintations,listTypeOffSaleOff,listSaleOff,listUser] = await Promise.all([GetListDenomintations(),getListTypeOffSaleOff(),SaleOffModel.GetListSaleOff(Role,Group),getListUsers()]);
+    
     // console.log(JSON.parse(JSON.stringify(listDenomintations)));
-    console.log(listSaleOff);
+    console.log(listUser);
     res.render('clients/saleoff/index',{user:req.user,listDenomintations:JSON.parse(JSON.stringify(listDenomintations)),
-        listTypeOffSaleOff:JSON.parse(JSON.stringify(listTypeOffSaleOff)) , moment:moment,listSaleOff:listSaleOff[0]})
+        listTypeOffSaleOff:JSON.parse(JSON.stringify(listTypeOffSaleOff)) , moment:moment,listSaleOff:listSaleOff[0],listUser:listUser})
 }
 let create = async (req,res)=>{
     try{

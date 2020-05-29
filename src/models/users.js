@@ -134,10 +134,17 @@ let updatePassword = async (IdUser,password)=>{
     user.Password= password ;
     user.save();
 }
+let getListUsers =async ()=>{
+    let users = await UsersDB.findAll({
+        raw:true
+    })
+    return users ;
+}
 module.exports={
     createUser,getUserByPermissions,changePasswordUser,getUserByUsername,delteUser,
     getListUserInGroup,
     getUserById,
     UpdateUser,
-    updatePassword
+    updatePassword,
+    getListUsers
 }
