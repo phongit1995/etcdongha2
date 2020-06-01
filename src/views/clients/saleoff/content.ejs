@@ -122,7 +122,7 @@
                                     <% listSaleOff.forEach((item,index)=>{ %>
                                         <tr>
                                             <td><%=index+1 %></td>
-                                            <td><%=item.Denominations %></td>
+                                            <td><%=item.ForUserName %></td>
                                             <td><%=item.TrackingNo %></td>
                                             <td>
                                                 <button type="button" class="btn btn-purple waves-effect waves-light btn-xs" data-toggle="modal" data-target="#accordion-modal">Chi tiết</button>
@@ -241,12 +241,18 @@
                                             <td><font color="red"></font></td>
                                             <td><i class="fa fa-eye show-image"  data-link="<%=item.SaleoffImage%>" ></i></td>
                                             <td>
-                                            
-                                                <select>
-                                                    <option>Đang giao</option>
-                                                    <option>Thành công</option>
-                                                    <option>Hủy đơn</option>
-                                                </select>
+                                                
+                                                <% if(item.StatusPro=="1"){%>
+                                                    <span>Đang Giao</span>
+                                                <%} %>
+                                                <% if(item.StatusPro=="2"){%>
+                                                    <span>Thành Công</span>
+                                                    
+                                                <%}%>
+                                                <% if(item.StatusPro=="3"){%>
+                                                    <span>Hủy</span>
+                                                    
+                                                <%}%>
                                             </td>
                                             <td><%=(item.QtyPro * item.RatePro) - (item.TickMoney)%></td>
                                             <td><%=moment(item.DateDeli).tz("Asia/Bangkok").format("DD-MM-YYYY")  %></td>
@@ -261,7 +267,6 @@
     
                                                         <button type="button" class="edit  dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-pencil"></i> Sửa</button>
                                                         <button type="button" class="del  deleteSaleOff dropdown-item" data-id= <%=item.SaleOffID %> ><i class="fa fa-trash"></i> Xóa</button>
-                                                         
                                                      </div>
                                                     <%} %>
                                                 </div>

@@ -111,7 +111,6 @@ $(document).ready(function(){
     // Clear Input
     function ClearInput(){
         $('#LicensePlates').val('');
-
         $('#DateStart').val('');
         $('#DateEnd').val('');
         $('#Notes').val(' ');
@@ -185,18 +184,24 @@ $(document).ready(function(){
             success:function(data){
                 console.log(data);
                 if(!data.error){
-                    $("#LicensePlatesEdit").val(data.data.LicensePlates);
-                    $("#NameCustomerEdit").val(data.data.NameCustomer);
-                    $("#TypeOffSaleOffEdit").val(data.data.TypeOfSaleOff).change();
-                    $("#DenomintationsEdit").val(data.data.Denominations).change();
-                    $("#DateStartEdit").val(moment(data.data.DateStart).tz("Asia/Bangkok").format("YYYY-MM-DD"));
-                    $("#DateEndEdit").val(moment(data.data.DateEnd).tz("Asia/Bangkok").format("YYYY-MM-DD"));
-                    $("#NotesEdit").val(data.data.Notes);
+                    $("#TrackingNoEdit").val(data.data[0].TrackingNo);
+                    $("#StatusProEdit").val(data.data[0].StatusPro).change();
+                    $("#ForUserEdit").val(data.data[0].ForUser).change();
+                    $("#AddVnEdit").val(data.data[0].AddVn)
+                    $("#PhoneVnEdit").val(data.data[0].PhoneVn)
+                    $("#AddJpEdit").val(data.data[0].AddJp)
+                    $("#PhoneJpEdit").val(data.data[0].PhoneJp)
+                    $("#NottingEdit").val(data.data[0].Notting)
+                    $("#NameProductEdit").val(data.data[0].NameProduct)
+                    $("#QtyProEdit").val(data.data[0].QtyPro);
+                    $("#RateProEdit").val(data.data[0].RatePro);
+                    $("#TickMoneyEdit").val(data.data[0].TickMoney);
+                    $("#DateDeliEdit").val( moment(data.data[0].DateDeli).tz("Asia/Bangkok").format("YYYY-MM-DD"));
                     $("#idSaleOffEdit").val(data.data.SaleOffID);
                     $('#image-priview-edit').empty();
                     
-                    if(data.data.Image){
-                        let img =`<img src="${URLIMAGES+data.data.Image}" class='image-preview'/>`;
+                    if(data.data[0].SaleoffImage){
+                        let img =`<img src="${URLIMAGES +data.data[0].SaleoffImage}" class='image-preview'/>`;
                         $('#image-priview-edit').append(img);
                     }
                     $('#editForm').modal('toggle');
@@ -221,26 +226,25 @@ $(document).ready(function(){
     // Submit SaleOff Edit
     $(document).on('click','#UpdateSaleOff',function(){
         console.log('update sale off');
-        let LicensePlates = $("#LicensePlatesEdit").val();
-        let TypeOffSaleOff = $("#TypeOffSaleOffEdit").val();
-        let Denomintations = $("#DenomintationsEdit").val();
-        let DateStart = $("#DateStartEdit").val();
-        let DateEnd = $("#DateEndEdit").val();
-        let Notes = $("#NotesEdit").val();
-        let idSaleOffEdit = $("#idSaleOffEdit").val();
-        let File = $('#ImageEdit')[0].files[0];
-        if(LicensePlates=='' || DateStart==''||DateEnd==''){
+        let TrackingNo = $('#TrackingNoEdit').val();
+        let StatusPro = $('#StatusProEdit').val();
+        let AddVn = $('#AddVnEdit').val();
+        let PhoneVn = $('#PhoneVnEdit').val();
+        let AddJp = $('#AddJpEdit').val();
+        let PhoneJp = $('#PhoneJpEdit').val();
+        let Notting = $('#NottingEdit').val();
+        let NameProduct = $('#NameProductEdit').val();
+        let ForUser = $("#ForUserEdit").val();
+        let QtyPro = $('#QtyProEdit').val();
+        let RatePro = $('#RateProEdit').val();
+        let TickMoney = $('#TickMoneyEdit').val();
+        let DateDeli = $('#DateDeliEdit').val();
+        let File = $('#SaleoffImageEdit')[0].files[0];
+        console.log(TrackingNo ,StatusPro,AddVn,PhoneVn,AddJp,PhoneJp,Notting,NameProduct,QtyPro,RatePro,TickMoney,DateDeli);
+        if(TrackingNo=='' || AddVn==''||PhoneVn==''){
             return alertify.error('Vui Lòng Nhập Đủ Thông Tin');
         }
         let formData = new FormData();
-        formData.append('LicensePlates',LicensePlates);
-        formData.append('TypeOfSaleOff',TypeOffSaleOff);
-        formData.append('Denominations',Denomintations);
-        formData.append('DateStart',DateStart);
-        formData.append('DateEnd',DateEnd);
-        formData.append('Notes',Notes);
-        formData.append('FileImages',File);
-        formData.append('SaleOffID',idSaleOffEdit);
         $.ajax({
             url:'/saleoff/update',
             method:'post',
@@ -250,7 +254,7 @@ $(document).ready(function(){
             processData: false,
             success:function(data){
                 if(!data.error){
-                    LoadSaleOff();
+                    // LoadSaleOff();
                     $('#editForm').modal('hide');
                     Swal.fire(
                         'Thành Công!',

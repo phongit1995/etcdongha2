@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-box-edit">
-                        <h4 class="m-t-0 header-title">Thêm mới thông tin</h4>
+                        <h4 class="m-t-0 header-title">Sửa thông tin</h4>
                         <p class="text-muted m-b-30 font-13">
                             Vui lòng điền chính xác các thông tin.
                         </p>
@@ -25,21 +25,24 @@
                         <div class="form-group">
                             <label for="field-2" class="control-label">Trạng thái:</label>
                             <select class="form-control" id="StatusProEdit" name="StatusPro">
-                                <option value="Đang giao">Đang giao</option>
-                                <option value="Thành công">Thành công</option>
-                                <option value="Hủy">Hủy </option>
+                                <option value="1">Đang giao</option>
+                                <option value="2">Thành công</option>
+                                <option value="3">Hủy </option>
                         </select>
                         </div>
                     </div>
                     <div class="col-md-4">
+                        <%if(user.Role==1){%>
                         <div class="form-group">
                             <label for="field-2" class="control-label">Nhân viên:</label>
-                            <select class="form-control" id="DenominationsEdit" name="Denominations">
-                                <option value="">Tieuman</option>
-                                <option value="">Abc</option>
-                                <option value="">Dad</option>
+                            <select class="form-control" id="ForUserEdit" name="Denominations">
+                                <%
+                                listUser.forEach((item)=>{ %>
+                                    <option value="<%=item.Id%>"><%=item.UserName%></option>
+                                <%})%>
                         </select>
                         </div>
+                        <%}%>
                     </div>
                 </div>
                 <div class="row">
@@ -92,14 +95,14 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Số lượng:</label>
-                            <input class="form-control" id="QtyProEdit" name="" type="number">
+                            <input class="form-control" id="QtyProEdit" name="" type="number" <%if(user.Role !=1){%> disabled <%}%> >
                             </input>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Đơn giá:</label>
-                            <input class="form-control" id="RateProEdit" name="" type="number">
+                            <input class="form-control" id="RateProEdit" name="" type="number"  <%if(user.Role !=1){%> disabled <%}%> >
                             </input>
                         </div>
                     </div>
@@ -108,7 +111,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="field-2" class="control-label">Đặt cọc:</label>
-                            <input class="form-control" id="TickMoneyEdit" name="" type="number">
+                            <input class="form-control" id="TickMoneyEdit" name="" type="number"   <%if(user.Role !=1){%> disabled <%}%> >
                         </input>
                         </div>
                     </div>
@@ -123,8 +126,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group no-margin">
+                            <input hidden id="idSaleOffEdit" />
                             <label for="field-7" class="control-label">Hình ảnh:</label>
-                            <div id="image-priview-add" style="padding: 5px"></div>
+                            <div id="image-priview-edit" style="padding: 5px"></div>
                             <input type="file" class="form-control"  id="SaleoffImageEdit">
                         </div>
                     </div>
@@ -246,6 +250,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
+                        <%if(user.Role==1){%>
                         <div class="form-group">
                             <label for="field-2" class="control-label">Nhân viên:</label>
                             <select class="form-control" id="ForUser" name="Denominations">
@@ -255,6 +260,7 @@
                                 <%})%>
                         </select>
                         </div>
+                        <%}%>
                     </div>
                 </div>
               <!-- Address -->

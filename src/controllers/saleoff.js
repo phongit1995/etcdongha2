@@ -5,18 +5,18 @@ let {getListTypeOffSaleOff} = require('./../models/typeoffsaleoff');
 let {getListUsers} = require("./../models/users");
 let SaleOffModel= require('./../models/saleoff');
 let index = async (req,res)=>{
-    let {Group,Role} = req.user ;
-    let [listDenomintations,listTypeOffSaleOff,listSaleOff,listUser] = await Promise.all([GetListDenomintations(),getListTypeOffSaleOff(),SaleOffModel.GetListSaleOff(Role,Group),getListUsers()]);
+    let {Role,Id} = req.user ;
+    let [listDenomintations,listTypeOffSaleOff,listSaleOff,listUser] = await Promise.all([GetListDenomintations(),getListTypeOffSaleOff(),SaleOffModel.GetListSaleOff(Role,Id),getListUsers()]);
     
     // console.log(JSON.parse(JSON.stringify(listDenomintations)));
-    console.log(listUser);
+    // console.log(listUser);
     res.render('clients/saleoff/index',{user:req.user,listDenomintations:JSON.parse(JSON.stringify(listDenomintations)),
         listTypeOffSaleOff:JSON.parse(JSON.stringify(listTypeOffSaleOff)) , moment:moment,listSaleOff:listSaleOff[0],listUser:listUser})
 }
 let create = async (req,res)=>{
     try{
         console.log(req.body);
-        let result = await  SaleOffModel.create(req.body,req.user.Id,req.file);
+        let result = await  SaleOffModel.create(req.body,req.user,req.file);
        ResponseHelper.json(res,null,result);
     }
     catch(error){
@@ -63,7 +63,7 @@ let deleteSaleoff = async (req,res)=>{
 let getInfo = async (req,res)=>{
     try {
         let result = await SaleOffModel.GetInfoSaleOff(req.body.Id);
-        return ResponseHelper.json(res,null,result);
+        return ResponseHelper.json(res,null,result[0]);
     } catch (error) {
         console.log(error);
         return ResponseHelper.json(res,'Lỗi',error);
