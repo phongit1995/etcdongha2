@@ -24,14 +24,19 @@ $(function() {
     $("#wizard-callbacks").stepy({
         next: function(index) {
             // alert('Going to step: ' + index);
-            $("#addressBill").text($('#AddVn').val());
-            $("#phoneBill").text($('#PhoneVn').val())
-            $("#addressShip").text($('#AddJp').val());
-            $("#phoneShip").text($('#PhoneJp').val())
-            $("#ProductName").text($("#NameProduct").val());
-            $("#ProductNumber").text($("#QtyPro").val());
-            $("#ProductPrice").text($("#RatePro").val());
-            $("#ProductToTal").text($("#RatePro").val()*$("#QtyPro").val());
+
+
+         
+                $("#addressBill").text($('#AddVn').val());
+                $("#phoneBill").text($('#PhoneVn').val())
+                $("#addressShip").text($('#AddJp').val());
+                $("#phoneShip").text($('#PhoneJp').val())
+                $("#ProductName").text($("#NameProduct").val());
+                $("#ProductNumber").text($("#QtyPro").val());
+                $("#ProductPrice").text($("#RatePro").val());
+                $("#ProductToTal").text($("#RatePro").val()*$("#QtyPro").val());
+
+           
         },
         back: function(index) {
             // alert('Returning to step: ' + index);
@@ -68,21 +73,20 @@ $(function() {
     // Stepy callbacks
     $("#wizard-callbacks-edit").stepy({
         next: function(index) {
-            // alert('Going to step: ' + index);
-            $("#addressBill").text($('#AddVn').val());
-            $("#phoneBill").text($('#PhoneVn').val())
-            $("#addressShip").text($('#AddJp').val());
-            $("#phoneShip").text($('#PhoneJp').val())
-            $("#ProductName").text($("#NameProduct").val());
-            $("#ProductNumber").text($("#QtyPro").val());
-            $("#ProductPrice").text($("#RatePro").val());
-            $("#ProductToTal").text($("#RatePro").val()*$("#QtyPro").val());
+            $("#addressBillEdit").text($('#AddVnEdit').val());
+            $("#phoneBillEdit").text($('#PhoneVnEdit').val())
+            $("#addressShipEdit").text($('#AddJpEdit').val());
+            $("#phoneShipEdit").text($('#PhoneJpEdit').val())
+            $("#ProductNameEdit").text($("#NameProductEdit").val());
+            $("#ProductNumberEdit").text($("#QtyProEdit").val());
+            $("#ProductPriceEdit").text($("#RateProEdit").val());
+            $("#ProductToTalEdit").text($("#RateProEdit").val()*$("#QtyProEdit").val());
         },
         back: function(index) {
-            // alert('Returning to step: ' + index);
+          
         },
         finish: function() {
-            // alert('Submit canceled.');
+           
             return false;
         }
     });
@@ -114,7 +118,7 @@ $(function() {
     // Stepy callbacks
     $("#wizard-callbacks-edit-nhanvien").stepy({
         next: function(index) {
-            // alert('Going to step: ' + index);
+            alert('Going to step: ' + index);
             $("#addressBill").text($('#AddVn').val());
             $("#phoneBill").text($('#PhoneVn').val())
             $("#addressShip").text($('#AddJp').val());

@@ -5,13 +5,14 @@ let moment = require('moment-timezone');
 let create = async (data,user,Image)=>{
     delete data.FileImages;
     if(user.Role!=1){
-        data[SaleOffFields.ForUser]=user.Id;``
+        data[SaleOffFields.ForUser]=user.Id;
     }
     data[SaleOffFields.CreateByUser] = user.Id;
     data[SaleOffFields.SaleOffID]= Texthelper.genId();
     if(Image){
         data[SaleOffFields.SaleoffImage] =  Image.filename ;
     }
+    console.log(data);
     // console.log(data);
     // console.log(data);
     let result = await SaleOffDB.create({...data});
@@ -63,15 +64,15 @@ let GetInfoSaleOff = async (Id)=>{
 }
 let updateSaleOff = async (data,IdUser,Image)=>{
     delete data.FileImages;
-    console.log(data);
     let IdSaleOff = data[SaleOffFields.SaleOffID];
     if(Image){
-        data[SaleOffFields.Image] = Image.filename ;
+        data[SaleOffFields.SaleoffImage] = Image.filename ;
     }
     let SaleOff = await GetInfoSaleOff(IdSaleOff);
-    let NotesAdmin = SaleOff.dataValues[SaleOffFields.NotesAdmin];
-    delete SaleOff.dataValues[SaleOffFields.NotesAdmin];
-    let Note = {type:'UpdateSaleOff',UserId:IdUser , Time:moment().tz("Asia/Bangkok").format("DD-MM-YYYY HH:mm") ,oldValue:SaleOff.dataValues} ;
+    console.log(SaleOff);
+    let NotesAdmin = SaleOff[SaleOffFields.NotesAdmin];
+    delete SaleOff[SaleOffFields.NotesAdmin];
+    let Note = {type:'UpdateSaleOff',UserId:IdUser , Time:moment().tz("Asia/Bangkok").format("DD-MM-YYYY HH:mm") ,oldValue:SaleOff} ;
     if(!NotesAdmin){ NotesAdmin=[] ; NotesAdmin.push(Note) }else{
         NotesAdmin= JSON.parse(NotesAdmin);
         NotesAdmin.push(Note)

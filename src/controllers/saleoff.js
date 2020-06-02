@@ -54,6 +54,7 @@ let deleteSaleoff = async (req,res)=>{
         return ResponseHelper.json(res,'Bạn Không Có Quyền',null);
     }
     try {
+       
         let result = await SaleOffModel.deleteSaleoff(req.body,req.user.Id);
         ResponseHelper.json(res,null,result);
     } catch (error) {
@@ -73,7 +74,7 @@ let getInfo = async (req,res)=>{
 }
 let updateSaleOff = async (req,res)=>{
     try {
-        // console.log(req.body);
+        console.log(req.body);
         let result = await SaleOffModel.updateSaleOff(req.body,req.user.Id,req.file);
         return ResponseHelper.json(res,null,result);
     } catch (error) {

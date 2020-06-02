@@ -1,3 +1,4 @@
+let statusEdit = false ;
 $(document).ready(function(){
     const URLIMAGES = '/images/storage/';
     let table = $('#datatable').DataTable({
@@ -184,6 +185,8 @@ $(document).ready(function(){
             success:function(data){
                 console.log(data);
                 if(!data.error){
+                    console.log(statusEdit);
+                    statusEdit=true ;
                     $("#TrackingNoEdit").val(data.data[0].TrackingNo);
                     $("#StatusProEdit").val(data.data[0].StatusPro).change();
                     $("#ForUserEdit").val(data.data[0].ForUser).change();
@@ -197,7 +200,7 @@ $(document).ready(function(){
                     $("#RateProEdit").val(data.data[0].RatePro);
                     $("#TickMoneyEdit").val(data.data[0].TickMoney);
                     $("#DateDeliEdit").val( moment(data.data[0].DateDeli).tz("Asia/Bangkok").format("YYYY-MM-DD"));
-                    $("#idSaleOffEdit").val(data.data.SaleOffID);
+                    $("#idSaleOffEdit").val(data.data[0].SaleOffID);
                     $('#image-priview-edit').empty();
                     
                     if(data.data[0].SaleoffImage){
@@ -226,6 +229,7 @@ $(document).ready(function(){
     // Submit SaleOff Edit
     $(document).on('click','#UpdateSaleOff',function(){
         console.log('update sale off');
+        let SaleOffId= $("#idSaleOffEdit").val();
         let TrackingNo = $('#TrackingNoEdit').val();
         let StatusPro = $('#StatusProEdit').val();
         let AddVn = $('#AddVnEdit').val();
@@ -240,11 +244,27 @@ $(document).ready(function(){
         let TickMoney = $('#TickMoneyEdit').val();
         let DateDeli = $('#DateDeliEdit').val();
         let File = $('#SaleoffImageEdit')[0].files[0];
-        console.log(TrackingNo ,StatusPro,AddVn,PhoneVn,AddJp,PhoneJp,Notting,NameProduct,QtyPro,RatePro,TickMoney,DateDeli);
+        console.log(TrackingNo ,StatusPro,AddVn,PhoneVn,AddJp,PhoneJp,Notting,NameProduct,QtyPro,RatePro,TickMoney,DateDeli,SaleOffId);
         if(TrackingNo=='' || AddVn==''||PhoneVn==''){
             return alertify.error('Vui Lòng Nhập Đủ Thông Tin');
         }
         let formData = new FormData();
+        formData.append('SaleOffID',SaleOffId);
+        formData.append('TrackingNo',TrackingNo);
+        formData.append('StatusPro',StatusPro);
+        formData.append('AddVn',AddVn);
+        formData.append('PhoneVn',PhoneVn);
+        formData.append('AddJp',AddJp);
+        formData.append('PhoneJp',PhoneJp);
+        formData.append('ForUser',ForUser);
+        formData.append('Notting',Notting);
+        formData.append('NameProduct',NameProduct);
+        formData.append('QtyPro',QtyPro);
+        formData.append('RatePro',RatePro);
+        formData.append('TickMoney',TickMoney);
+        formData.append('DateDeli',DateDeli);
+        formData.append("FileImages",File)
+        console.log(formData);
         $.ajax({
             url:'/saleoff/update',
             method:'post',
@@ -255,12 +275,15 @@ $(document).ready(function(){
             success:function(data){
                 if(!data.error){
                     // LoadSaleOff();
-                    $('#editForm').modal('hide');
+                  
                     Swal.fire(
                         'Thành Công!',
                         'Cập Nhật Thông Tin Thành Công!',
                         'success'
                       )
+                      setTimeout(()=>{
+                        location.reload();
+                        },500)
                 }
                 else{
                     Swal.fire({
